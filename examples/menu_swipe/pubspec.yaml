@@ -1,0 +1,27 @@
+name: menu_swipe
+description: A new Flutter project.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.0
+  menu_swipe_helpers:
+    path: ../../menu_swipe_helpers
+  flutter_plugins_assets:
+    git:
+      url: git://github.com/fidelisa/flutter_plugins_assets
+      ref: 5897516fecdbfbe2b931ea822856e848edff1343
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+#  assets:
+#    - packages/flutter_plugins_assets/avatars/yann.jpg
