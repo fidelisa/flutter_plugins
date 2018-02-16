@@ -10,46 +10,41 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Widget _userAccountDrawer(BuildContext context) =>
+        new UserAccountsDrawerHeader(
+          accountName: new Text("Yann-Cyril Pelud"),
+          accountEmail: new Text("yann@fidelisa.com"),
+          currentAccountPicture: const CircleAvatar(
+            backgroundImage: const AssetImage(
+              _kAsset0,
+              package: _kGalleryAssetsPackage,
+            ),
+          ),
+          margin: EdgeInsets.zero,
+        );
 
+    var _drawerBuilder = (BuildContext context) => new DrawerHelper(
+          drawerContents: [
+            new FirstPageDefinition(),
+            new SecondPageDefinition(),
+            new ThirdPageDefinition()
+          ],
+          userAccountsDrawerHeader: _userAccountDrawer,
+        );
 
-    FdlsDrawerStorage.instance.drawer = (BuildContext context) {
-      return new FdlsDrawer(
-        drawerContents: [
-          new FirstPage(),
-          new SecondPage()
-        ],
-        userAccountsDrawerHeader: _userAccountDrawer,);
-    };
-
-      return new MaterialApp(
-        title: 'Flutter Demo',
-        theme: new ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: new FirstPage(),
-      );
-
+    return new DrawerProvider(
+      drawerBuilder: _drawerBuilder,
+      child: new MaterialApp(
+          title: 'Flutter Demo',
+          theme: new ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: new FirstPage()),
+    );
   }
-
-  Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
-    accountName: new Text("Yann-Cyril Pelud"),
-    accountEmail: new Text("yann@fidelisa.com"),
-    currentAccountPicture: const CircleAvatar(
-      backgroundImage: const AssetImage(
-        _kAsset0,
-        package: _kGalleryAssetsPackage,
-      ),
-    ),
-    margin: EdgeInsets.zero,
-  );
 }
 
-class FirstPage extends StatefulWidget implements FdlsDrawerPage {
-  FirstPage({Key key}) : super(key: key);
-
-  @override
-  _FirstPage createState() => new _FirstPage();
-
+class FirstPageDefinition implements DrawerDefinition {
   @override
   Icon get icon => const Icon(Icons.home);
 
@@ -58,44 +53,44 @@ class FirstPage extends StatefulWidget implements FdlsDrawerPage {
 
   @override
   String get title => "First page";
+
+  @override
+  Widget builder(BuildContext context) {
+    return new FirstPage();
+  }
 }
 
-class _FirstPage extends State<FirstPage> with FdlsDrawerPageState {
+class FirstPage extends StatefulWidget {
+  @override
+  _FirstPage createState() => new _FirstPage();
+}
 
+class _FirstPage extends State<FirstPage> with DrawerStateMixin {
   @override
   Widget buildBody() {
     var _style = Theme.of(context).textTheme.subhead;
     return new Container(
-      decoration: new BoxDecoration(color: Colors.green),
-      child: new Center(
-        child: new Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            new Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: new Text(
-              '''
-Very basic page, go to the seconde page to see more
-              ''',
-              style: _style,
-              softWrap: true),
-            ),
-          ],
-        ),
-      )
-    );
-
-  } 
-
-
-}
-
-class SecondPage extends StatefulWidget implements FdlsDrawerPage {
-  SecondPage({Key key}) : super(key: key);
+        decoration: new BoxDecoration(color: Colors.green),
+        child: new Center(
+          child: new Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              new Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: new Text('''
+Very basic page, go to the second page to see more
+              ''', style: _style, softWrap: true),
+              ),
+            ],
+          ),
+        ));
+  }
 
   @override
-  _SecondPage createState() => new _SecondPage();
+  String get title => "First Page";
+}
 
+class SecondPageDefinition implements DrawerDefinition {
   @override
   Icon get icon => const Icon(Icons.settings);
 
@@ -103,47 +98,51 @@ class SecondPage extends StatefulWidget implements FdlsDrawerPage {
   String get subtitle => null;
 
   @override
-  String get title => "Seconde Page";
+  String get title => "Second Page";
+
+  @override
+  Widget builder(BuildContext context) {
+    return new SecondPage();
+  }
 }
 
-class _SecondPage extends State<SecondPage> with FdlsDrawerPageState {
+class SecondPage extends StatefulWidget {
+  @override
+  _SecondPage createState() => new _SecondPage();
+}
 
+class _SecondPage extends State<SecondPage> with DrawerStateMixin {
   @override
   Widget buildBody() {
     var _style = Theme.of(context).textTheme.subhead;
     return new Container(
-      decoration: new BoxDecoration(color: Colors.red),
-      child: new Center(
-        child: new Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            new Text("Demo",style: _style),
-            new Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: new Text(
-              '''
+        decoration: new BoxDecoration(color: Colors.red),
+        child: new Center(
+          child: new Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              new Text("Demo", style: _style),
+              new Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: new Text('''
 Action in app bar
 Persistent Footer Button
 Floating button
-              ''',
-              style: _style,
-              softWrap: true),
-            ),
-          ],
-        ),
-      )
-  );
-
-  } 
+              ''', style: _style, softWrap: true),
+              ),
+            ],
+          ),
+        ));
+  }
 
   List<Widget> buildActions() => [
-    new IconButton(
-      icon: new Icon(Icons.edit),
-      onPressed: () => {
-        //TODO not implemented
-      },
-    ),
-  ];
+        new IconButton(
+          icon: new Icon(Icons.edit),
+          onPressed: () => {
+                //TODO not implemented
+              },
+        ),
+      ];
 
   @override
   List<Widget> buildPresistentFooterButtons() {
@@ -154,8 +153,8 @@ Floating button
         children: <Widget>[
           new FlatButton(
               onPressed: () => {
-                //TODO not implemented
-              },
+                    //TODO not implemented
+                  },
               child: new Text("BUTTON")),
         ],
       )
@@ -167,8 +166,59 @@ Floating button
     return new FloatingActionButton(
         child: new Icon(Icons.add),
         onPressed: () => {
-          //TODO not implemented          
-        });
+              //TODO not implemented
+            });
   }
 
+  @override
+  String get title => "Second Page";
+}
+
+class ThirdPageDefinition implements DrawerDefinition {
+  @override
+  Icon get icon => const Icon(Icons.settings);
+
+  @override
+  String get subtitle => null;
+
+  @override
+  String get title => "Third Page";
+
+  @override
+  Widget builder(BuildContext context) {
+    return new ThirdPage();
+  }
+}
+
+class ThirdPage extends StatefulWidget {
+  @override
+  _ThirdPage createState() => new _ThirdPage();
+}
+
+class _ThirdPage extends State<ThirdPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    var _style = Theme.of(context).textTheme.subhead;
+
+    return new Scaffold(
+      key: _scaffoldKey,
+      drawer: DrawerProvider.of(context).drawerBuilder(context),
+      body: new Center(
+        child: new InkWell(
+          child: new Text('''
+Page from scatch 
+TAP to open the drawer
+          ''',
+            style: _style,
+            softWrap: true,
+          ),
+          onTap: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
+        ),
+      ),
+    );
+  }
 }

@@ -7,45 +7,43 @@ import 'package:meta/meta.dart';
 
 /// Singleton class that store a drawer
 ///
-class FdlsDrawerStorage {
+class DrawerProvider  extends InheritedWidget{
+
+  DrawerProvider({
+    Key key,
+    @required this.drawerBuilder,    
+    Widget child,
+  }):assert(drawerBuilder != null),
+      super(key: key, child: child);
 
   /// The drawer
-  WidgetBuilder drawer;
+  final WidgetBuilder drawerBuilder;
 
-  /// Hide creator to force singleton
-  FdlsDrawerStorage._();
+  static DrawerProvider of(BuildContext context) {
+    return context.inheritFromWidgetOfExactType(DrawerProvider);
+  }
 
-  /// Singleton instance
-  static FdlsDrawerStorage instance = new FdlsDrawerStorage._();
+  @override
+  bool updateShouldNotify(DrawerProvider old) => drawerBuilder != old.drawerBuilder;
 
 }
 
 ///
-@optionalTypeArgs
-abstract class FdlsDrawerPage {
+abstract class DrawerDefinition {
 
   String get title;
   Icon get icon;
   String get subtitle;
+
+  Widget builder(BuildContext context);
 }
 
 ///
-@optionalTypeArgs
-abstract class FdlsDrawerPageState<T extends StatefulWidget> extends State<T> {
+abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  FdlsDrawerPage _drawerPageWidget;
-
-  factory FdlsDrawerPageState._() => null;
-
-
-  @override
-  @mustCallSuper
-  void initState() {
-    super.initState();
-    _drawerPageWidget = (widget is FdlsDrawerPage) ? (widget as FdlsDrawerPage) : null;
-  }
+  factory DrawerStateMixin._() => null;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +54,7 @@ abstract class FdlsDrawerPageState<T extends StatefulWidget> extends State<T> {
     key: _scaffoldKey,
     drawer: buildDrawer(),
     appBar: buildAppBar(),
-    body: new SafeArea(child: buildBody()),
+    body: buildBody(),
     persistentFooterButtons: buildPresistentFooterButtons(),
     floatingActionButton: buildFloatingButton(),
   );
@@ -89,30 +87,31 @@ abstract class FdlsDrawerPageState<T extends StatefulWidget> extends State<T> {
 
   List<Widget> buildActions() => null;
 
-  Widget buildDrawer() => FdlsDrawerStorage.instance.drawer(context);
+  Widget buildDrawer() => DrawerProvider.of(context).drawerBuilder(context);
 
   List<Widget> buildPresistentFooterButtons() => [];
 
   Widget buildFloatingButton() => null;
 
-  String get title => _drawerPageWidget?.title;
+  String get title => "Titre";
+  
 }
 
 ///
-class FdlsDrawer extends StatefulWidget {
-  final List<FdlsDrawerPage> drawerContents;
+class DrawerHelper extends StatefulWidget {
+  final List<DrawerDefinition> drawerContents;
   final WidgetBuilder userAccountsDrawerHeader;
 
-  FdlsDrawer({ Key key,
+  DrawerHelper({ Key key,
     this.drawerContents,
     this.userAccountsDrawerHeader }):super(key: key);
 
   @override
-  _FdlsDrawerState createState() => new _FdlsDrawerState();
+  _DrawerHelperState createState() => new _DrawerHelperState();
 }
 
 ///
-class _FdlsDrawerState extends State<FdlsDrawer>
+class _DrawerHelperState extends State<DrawerHelper>
     with TickerProviderStateMixin {
 
   AnimationController _controller;
@@ -161,7 +160,7 @@ class _FdlsDrawerState extends State<FdlsDrawer>
                         child: new Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: widget.drawerContents.map((FdlsDrawerPage f) {
+                          children: widget.drawerContents.map((f) {
                             return new ListTile(
                               leading: f.icon,
                               title: new Text(f.title),
@@ -188,12 +187,12 @@ class _FdlsDrawerState extends State<FdlsDrawer>
     );
   }
 
-  _onTapChangePage(FdlsDrawerPage f) {
+  _onTapChangePage(DrawerDefinition f) {
     Navigator.of(context).popUntil(ModalRoute.withName('/'));
     Navigator.of(context).push(
         new PageRouteBuilder(
             pageBuilder: (BuildContext context, _, __) {
-              return (f is Widget) ? (f as Widget) : null;
+              return f.builder(context);
             },
             transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
               return new FadeTransition(
