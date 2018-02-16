@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
+
 
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
@@ -10,30 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Widget _userAccountDrawer(BuildContext context) =>
-        new UserAccountsDrawerHeader(
-          accountName: new Text("Yann-Cyril Pelud"),
-          accountEmail: new Text("yann@fidelisa.com"),
-          currentAccountPicture: const CircleAvatar(
-            backgroundImage: const AssetImage(
-              _kAsset0,
-              package: _kGalleryAssetsPackage,
-            ),
-          ),
-          margin: EdgeInsets.zero,
-        );
 
-    var _drawerBuilder = (BuildContext context) => new DrawerHelper(
-          drawerContents: [
-            new FirstPageDefinition(),
-            new SecondPageDefinition(),
-            new ThirdPageDefinition()
-          ],
-          userAccountsDrawerHeader: _userAccountDrawer,
-        );
-
-    return new DrawerProvider(
-      drawerBuilder: _drawerBuilder,
+    return new ScopedModel<DrawerModel>(
+      model: new DrawerModel(drawer: _drawerBuilder),
       child: new MaterialApp(
           title: 'Flutter Demo',
           theme: new ThemeData(
@@ -78,7 +59,7 @@ class _FirstPage extends State<FirstPage> with DrawerStateMixin {
               new Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: new Text('''
-Very basic page, go to the second page to see more
+Very basic page, go to the other pages to see more
               ''', style: _style, softWrap: true),
               ),
             ],
@@ -176,7 +157,7 @@ Floating button
 
 class ThirdPageDefinition implements DrawerDefinition {
   @override
-  Icon get icon => const Icon(Icons.settings);
+  Icon get icon => const Icon(Icons.email);
 
   @override
   String get subtitle => null;
@@ -198,27 +179,97 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPage extends State<ThirdPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
+
+
+  void updateDrawer(Widget value) {
+    var finder = new ModelFinder<DrawerModel>();
+    var model = finder.of(context);
+    model?.update(value);
+  }
+
   @override
   Widget build(BuildContext context) {
     var _style = Theme.of(context).textTheme.subhead;
 
     return new Scaffold(
       key: _scaffoldKey,
-      drawer: DrawerProvider.of(context).drawerBuilder(context),
+      drawer: new ScopedModelDescendant<DrawerModel>(
+        builder: (context, child, model) => model.drawer,
+      ),
       body: new Center(
-        child: new InkWell(
-          child: new Text('''
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            new InkWell(
+              child: new Text('''
 Page from scatch 
 TAP to open the drawer
-          ''',
-            style: _style,
-            softWrap: true,
-          ),
-          onTap: () {
-            _scaffoldKey.currentState.openDrawer();
-          },
+              ''',
+                style: _style,
+                softWrap: true,
+              ),
+              onTap: () {
+                _scaffoldKey.currentState.openDrawer();
+              },
+            ),
+            new RaisedButton(
+              child: new Text("Change menu swipe"),
+                onPressed: () {
+                  updateDrawer(_drawerBuilder2);
+                })
+          ],
         ),
       ),
     );
   }
 }
+
+
+class FourthPageDefinition implements DrawerDefinition {
+  @override
+  Icon get icon => const Icon(Icons.person);
+
+  @override
+  String get subtitle => null;
+
+  @override
+  String get title => "Fourth page";
+
+  @override
+  Widget builder(BuildContext context) {
+    return new FirstPage();
+  }
+}
+
+
+Widget _userAccountDrawer(BuildContext context) =>
+    new UserAccountsDrawerHeader(
+      accountName: new Text("Yann-Cyril Pelud"),
+      accountEmail: new Text("yann@fidelisa.com"),
+      currentAccountPicture: const CircleAvatar(
+        backgroundImage: const AssetImage(
+          _kAsset0,
+          package: _kGalleryAssetsPackage,
+        ),
+      ),
+      margin: EdgeInsets.zero,
+    );
+
+var _drawerBuilder =  new DrawerHelper(
+  drawerContents: [
+    new FirstPageDefinition(),
+    new SecondPageDefinition(),
+    new ThirdPageDefinition()
+  ],
+  userAccountsDrawerHeader: _userAccountDrawer,
+);
+
+var _drawerBuilder2 =  new DrawerHelper(
+    drawerContents: [
+      new FirstPageDefinition(),
+      new SecondPageDefinition(),
+      new ThirdPageDefinition(),
+      new FourthPageDefinition()
+    ],
+    userAccountsDrawerHeader: _userAccountDrawer
+);

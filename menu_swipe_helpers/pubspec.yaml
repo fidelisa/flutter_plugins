@@ -5,8 +5,11 @@ author:
 homepage:
 
 dependencies:
+  scoped_model: ">=0.1.1 <0.2.0"
   flutter:
-    sdk: flutter
+    sdk: flutter  
+
+
 
 dev_dependencies:
   test: ^0.12.0

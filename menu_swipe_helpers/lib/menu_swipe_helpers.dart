@@ -2,31 +2,24 @@ library menu_swipe_helpers;
 
 
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+import 'package:scoped_model/scoped_model.dart';
 
+class DrawerModel extends Model {
+  Widget _drawer;
 
-/// Singleton class that store a drawer
-///
-class DrawerProvider  extends InheritedWidget{
+  Widget get drawer => _drawer;
 
-  DrawerProvider({
-    Key key,
-    @required this.drawerBuilder,    
-    Widget child,
-  }):assert(drawerBuilder != null),
-      super(key: key, child: child);
+  DrawerModel({Widget drawer})
+    :assert(drawer != null),
+    _drawer= drawer;
 
-  /// The drawer
-  final WidgetBuilder drawerBuilder;
-
-  static DrawerProvider of(BuildContext context) {
-    return context.inheritFromWidgetOfExactType(DrawerProvider);
+  update(Widget value) {
+    _drawer = value;
+    notifyListeners();
   }
-
-  @override
-  bool updateShouldNotify(DrawerProvider old) => drawerBuilder != old.drawerBuilder;
-
 }
+
+
 
 ///
 abstract class DrawerDefinition {
@@ -52,7 +45,9 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
 
   Widget buildScaffold() => new Scaffold(
     key: _scaffoldKey,
-    drawer: buildDrawer(),
+    drawer: new ScopedModelDescendant<DrawerModel>(
+      builder: (context, child, model) => model.drawer,
+    ),
     appBar: buildAppBar(),
     body: buildBody(),
     persistentFooterButtons: buildPresistentFooterButtons(),
@@ -87,14 +82,14 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
 
   List<Widget> buildActions() => null;
 
-  Widget buildDrawer() => DrawerProvider.of(context).drawerBuilder(context);
-
   List<Widget> buildPresistentFooterButtons() => [];
 
   Widget buildFloatingButton() => null;
 
   String get title => "Titre";
-  
+
+
+
 }
 
 ///
@@ -104,7 +99,8 @@ class DrawerHelper extends StatefulWidget {
 
   DrawerHelper({ Key key,
     this.drawerContents,
-    this.userAccountsDrawerHeader }):super(key: key);
+    this.userAccountsDrawerHeader }):
+    super(key: key);
 
   @override
   _DrawerHelperState createState() => new _DrawerHelperState();
@@ -143,7 +139,9 @@ class _DrawerHelperState extends State<DrawerHelper>
     return new Drawer(
       child: new Column(
         children: <Widget>[
-          widget.userAccountsDrawerHeader(context),
+          widget.userAccountsDrawerHeader != null 
+            ? widget.userAccountsDrawerHeader(context) 
+            : new Container(),
           new MediaQuery.removePadding(
             context: context,
             // DrawerHeader consumes top MediaQuery padding.
