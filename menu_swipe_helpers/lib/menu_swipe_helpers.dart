@@ -82,7 +82,7 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
 
   List<Widget> buildActions() => null;
 
-  List<Widget> buildPresistentFooterButtons() => [];
+  List<Widget> buildPersistentFooterButtons() => [];
 
   Widget buildFloatingButton() => null;
 
