@@ -50,7 +50,7 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
     ),
     appBar: buildAppBar(),
     body: buildBody(),
-    persistentFooterButtons: buildPresistentFooterButtons(),
+    persistentFooterButtons: buildPersistentFooterButtons(),
     floatingActionButton: buildFloatingButton(),
   );
 

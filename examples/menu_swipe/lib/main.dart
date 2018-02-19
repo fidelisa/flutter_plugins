@@ -126,7 +126,7 @@ Floating button
       ];
 
   @override
-  List<Widget> buildPresistentFooterButtons() {
+  List<Widget> buildPersistentFooterButtons() {
     return [
       new ButtonBar(
         alignment: MainAxisAlignment.center,
