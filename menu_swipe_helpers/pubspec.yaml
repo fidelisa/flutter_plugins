@@ -1,11 +1,11 @@
 name: menu_swipe_helpers
-description: A new flutter package project.
-version: 0.0.1
+description: Helpers to create applications with menu swipe
+version: 0.0.2
 author: Yann-Cyril Pelud<yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
 environment:
-  sdk: ">=1.23.0 <2.0.0"
+  sdk: ">=1.8.0 <2.0.0"
 
 dependencies:
   scoped_model: ">=0.1.1 <0.2.0"
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  test: ^0.12.0
+  test: '>=0.12.0 <=0.13.0'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
