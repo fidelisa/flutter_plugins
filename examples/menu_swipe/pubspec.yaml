@@ -6,7 +6,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.0
   menu_swipe_helpers:
-    path: ../../menu_swipe_helpers
+    git:
+      url: https://github.com/fidelisa/flutter_plugins.git
+      path: menu_swipe_helpers
   
   flutter_plugins_assets:  
     git: 
