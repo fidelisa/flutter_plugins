@@ -1,6 +1,12 @@
 # menu_swipe_helpers
 
-A new flutter package project.
+Helpers to work with swipe menu in Flutter application.
+
+Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/examples/menu_swipe) example.
+
+# Usage 
+
+Import `package:scoped_model/scoped_model.dart`, create 
 
 ## Getting Started
 

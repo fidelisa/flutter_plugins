@@ -1,15 +1,16 @@
 name: menu_swipe_helpers
 description: A new flutter package project.
 version: 0.0.1
-author:
-homepage:
+author: Yann-Cyril Pelud<yann@fidelisa.com>
+homepage: https://github.com/fidelisa/flutter_plugins
+
+environment:
+  sdk: ">=1.23.0 <2.0.0"
 
 dependencies:
   scoped_model: ">=0.1.1 <0.2.0"
   flutter:
-    sdk: flutter  
-
-
+    sdk: flutter
 
 dev_dependencies:
   test: ^0.12.0
