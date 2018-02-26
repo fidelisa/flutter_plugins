@@ -1,5 +1,5 @@
 name: menu_swipe_helpers
-description: Helpers to create applications with menu swipe
+description: Provide classes, interfaces and mixins that help creating applications with menu swipe.
 version: 0.0.4
 author: Yann-Cyril Pelud<yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
