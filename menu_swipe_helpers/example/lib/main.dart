@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
 
-
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
 
@@ -12,7 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return new ScopedModel<DrawerModel>(
       model: new DrawerModel(drawer: _drawerBuilder),
       child: new MaterialApp(
@@ -179,8 +177,6 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPage extends State<ThirdPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-
-
   void updateDrawer(Widget value) {
     var finder = new ModelFinder<DrawerModel>();
     var model = finder.of(context);
@@ -201,7 +197,8 @@ class _ThirdPage extends State<ThirdPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             new InkWell(
-              child: new Text('''
+              child: new Text(
+                '''
 Page from scatch 
 TAP to open the drawer
               ''',
@@ -213,7 +210,7 @@ TAP to open the drawer
               },
             ),
             new RaisedButton(
-              child: new Text("Change menu swipe"),
+                child: new Text("Change menu swipe"),
                 onPressed: () {
                   updateDrawer(_drawerBuilder2);
                 })
@@ -223,7 +220,6 @@ TAP to open the drawer
     );
   }
 }
-
 
 class FourthPageDefinition implements DrawerDefinition {
   @override
@@ -241,9 +237,7 @@ class FourthPageDefinition implements DrawerDefinition {
   }
 }
 
-
-Widget _userAccountDrawer(BuildContext context) =>
-    new UserAccountsDrawerHeader(
+Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
       accountName: new Text("Yann-Cyril Pelud"),
       accountEmail: new Text("yann@fidelisa.com"),
       currentAccountPicture: const CircleAvatar(
@@ -255,7 +249,7 @@ Widget _userAccountDrawer(BuildContext context) =>
       margin: EdgeInsets.zero,
     );
 
-var _drawerBuilder =  new DrawerHelper(
+var _drawerBuilder = new DrawerHelper(
   drawerContents: [
     new FirstPageDefinition(),
     new SecondPageDefinition(),
@@ -264,12 +258,9 @@ var _drawerBuilder =  new DrawerHelper(
   userAccountsDrawerHeader: _userAccountDrawer,
 );
 
-var _drawerBuilder2 =  new DrawerHelper(
-    drawerContents: [
-      new FirstPageDefinition(),
-      new SecondPageDefinition(),
-      new ThirdPageDefinition(),
-      new FourthPageDefinition()
-    ],
-    userAccountsDrawerHeader: _userAccountDrawer
-);
+var _drawerBuilder2 = new DrawerHelper(drawerContents: [
+  new FirstPageDefinition(),
+  new SecondPageDefinition(),
+  new ThirdPageDefinition(),
+  new FourthPageDefinition()
+], userAccountsDrawerHeader: _userAccountDrawer);

@@ -1,0 +1,20 @@
+# Created with https://github.com/dart-lang/mono_repo
+language: dart
+
+jobs:
+  include:
+    - stage: smoke_test
+      script: ./tool/travis.sh dartfmt dartanalyzer
+      env: PKG="menu_swipe_helpers"
+      dart: dev
+
+stages:
+  - smoke_test
+
+# Only building master means that we don't run two builds for each pull request.
+branches:
+  only: [master]
+
+cache:
+  directories:
+    - $HOME/.pub-cache
