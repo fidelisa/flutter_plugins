@@ -1,5 +1,8 @@
 # menu_swipe_helpers
 
+[![Build Status](https://travis-ci.org/fidelisa/flutter_plugins.svg?branch=master)](https://travis-ci.org/fidelisa/flutter_plugins)
+[![pub package](https://img.shields.io/pub/v/menu_swipe_helpers.svg)](https://pub.dartlang.org/packages/menu_swipe_helpers)
+
 Helpers to create applications with menu swipe.
 
 Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/packages/menu_swipe_helpers/example) example.
