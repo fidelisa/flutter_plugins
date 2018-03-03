@@ -2,27 +2,68 @@ library menu_swipe_helpers;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
-/// Class that wrap the drawer
-class DrawerModel extends Model {
-  Widget _drawer;
+/// Store interface
+abstract class DrawerStoreMixin {
+  final Widget activeDrawer;
+  final DrawerDefinition activePage;
 
-  // Returns the drawer wrapped by this model.
-  Widget get drawer => _drawer;
+  DrawerStoreMixin({this.activeDrawer, this.activePage});
+}
 
-  /// Constructor
-  ///
-  /// The drawer is required.
-  DrawerModel({@required Widget drawer})
-      : assert(drawer != null),
-        _drawer = drawer;
-
-  /// Update the drawer
-  update(Widget value) {
-    _drawer = value;
-    notifyListeners();
+/// Active Drawer
+class ActiveDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new StoreConnector<DrawerStoreMixin, Widget>(
+      distinct: true,
+      converter: (Store<DrawerStoreMixin> store) => store.state.activeDrawer,
+      builder: (context, drawer) => drawer,
+    );
   }
+}
+
+/// Active Drawer
+class ActivePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new StoreConnector<DrawerStoreMixin, DrawerDefinition>(
+      distinct: true,
+      converter: (Store<DrawerStoreMixin> store) => store.state.activePage,
+      builder: (context, page) => page.builder(context),
+    );
+  }
+}
+
+class UpdateDrawerAction {
+  final Widget newDrawer;
+
+  UpdateDrawerAction(this.newDrawer);
+}
+
+final drawerReducer = combineTypedReducers<Widget>([
+  new ReducerBinding<Widget, UpdateDrawerAction>(_activeDrawerReducer),
+]);
+
+Widget _activeDrawerReducer(Widget activeDrawer, UpdateDrawerAction action) {
+  return action.newDrawer;
+}
+
+class ChangePageAction {
+  final DrawerDefinition newPage;
+
+  ChangePageAction(this.newPage);
+}
+
+final pageReducer = combineTypedReducers<DrawerDefinition>([
+  new ReducerBinding<DrawerDefinition, ChangePageAction>(_activePageReducer),
+]);
+
+DrawerDefinition _activePageReducer(
+    DrawerDefinition activeDrawer, ChangePageAction action) {
+  return action.newPage;
 }
 
 /// Interface that provides the basic elements of a menu
@@ -61,9 +102,7 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      drawer: new ScopedModelDescendant<DrawerModel>(
-        builder: (context, child, model) => model.drawer,
-      ),
+      drawer: new ActiveDrawer(),
       appBar: buildAppBar(),
       body: buildBody(),
       persistentFooterButtons: buildPersistentFooterButtons(),
@@ -129,18 +168,22 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
 class DrawerHelper extends StatefulWidget {
   final List<DrawerDefinition> drawerContents;
   final WidgetBuilder userAccountsDrawerHeader;
+  final bool changePageWithNavigator;
 
   /// Creates the drawer with a [list] of [DrawerDefinition] that content all
   /// the entries. A [WidgetBuilder] can be provided to user account header to
   /// the drawer.
-  DrawerHelper({Key key, this.drawerContents, this.userAccountsDrawerHeader})
+  DrawerHelper(
+      {Key key,
+      this.drawerContents,
+      this.userAccountsDrawerHeader,
+      this.changePageWithNavigator = false})
       : super(key: key);
 
   @override
   _DrawerHelperState createState() => new _DrawerHelperState();
 }
 
-//
 class _DrawerHelperState extends State<DrawerHelper>
     with TickerProviderStateMixin {
   AnimationController _controller;
@@ -217,13 +260,19 @@ class _DrawerHelperState extends State<DrawerHelper>
   }
 
   _onTapChangePage(DrawerDefinition f) {
-    Navigator.of(context).popUntil(ModalRoute.withName('/'));
-    Navigator.of(context).push(new PageRouteBuilder(
-            pageBuilder: (BuildContext context, _, __) {
-          return f.builder(context);
-        }, transitionsBuilder:
-                (_, Animation<double> animation, __, Widget child) {
-          return new FadeTransition(opacity: animation, child: child);
-        }));
+    if (widget.changePageWithNavigator) {
+      Navigator.of(context).popUntil(ModalRoute.withName('/'));
+      Navigator.of(context).push(new PageRouteBuilder(
+              pageBuilder: (BuildContext context, _, __) {
+            return f.builder(context);
+          }, transitionsBuilder:
+                  (_, Animation<double> animation, __, Widget child) {
+            return new FadeTransition(opacity: animation, child: child);
+          }));
+    } else {
+      Navigator.of(context).pop();
+      Store store = new StoreProvider.of(context).store;
+      store.dispatch(new ChangePageAction(f));
+    }
   }
 }

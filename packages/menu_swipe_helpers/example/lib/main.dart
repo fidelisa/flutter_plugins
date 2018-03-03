@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
 
 void main() => runApp(new MyApp());
 
+/// Create a Store with DrawerStoreMixin interface
+class AppState extends DrawerStoreMixin {
+  AppState({activeDrawer, activePage})
+      : super(activeDrawer: activeDrawer, activePage: activePage);
+}
+
+AppState appReducer(AppState state, action) {
+  return new AppState(
+      activeDrawer: drawerReducer(state.activeDrawer, action),
+      activePage: pageReducer(state.activePage, action));
+}
+
 class MyApp extends StatelessWidget {
+  final store = new Store<AppState>(appReducer,
+      initialState: new AppState(
+          activeDrawer: _drawerBuilder,
+          activePage: _drawerBuilder.drawerContents.first));
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new ScopedModel<DrawerModel>(
-      model: new DrawerModel(drawer: _drawerBuilder),
+    return new StoreProvider(
+      store: store,
       child: new MaterialApp(
           title: 'Flutter Demo',
           theme: new ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: new FirstPage()),
+          home: new ActivePage()),
     );
   }
 }
@@ -178,9 +196,8 @@ class _ThirdPage extends State<ThirdPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void updateDrawer(Widget value) {
-    var finder = new ModelFinder<DrawerModel>();
-    var model = finder.of(context);
-    model?.update(value);
+    Store store = new StoreProvider.of(context).store;
+    store.dispatch(new UpdateDrawerAction(value));
   }
 
   @override
@@ -189,9 +206,7 @@ class _ThirdPage extends State<ThirdPage> {
 
     return new Scaffold(
       key: _scaffoldKey,
-      drawer: new ScopedModelDescendant<DrawerModel>(
-        builder: (context, child, model) => model.drawer,
-      ),
+      drawer: new ActiveDrawer(),
       body: new Center(
         child: new Column(
           mainAxisSize: MainAxisSize.min,
