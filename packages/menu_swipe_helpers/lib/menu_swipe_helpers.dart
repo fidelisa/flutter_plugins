@@ -6,43 +6,43 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 /// Store interface
-abstract class DrawerStoreMixin {
-  final Widget activeDrawer;
-  final DrawerDefinition activePage;
-
-  DrawerStoreMixin({this.activeDrawer, this.activePage});
+abstract class DrawerStore {
+  Widget get activeDrawer;
+  DrawerDefinition get activePage;
 }
 
 /// Active Drawer
 class ActiveDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<DrawerStoreMixin, Widget>(
+    return new StoreConnector<DrawerStore, Widget>(
       distinct: true,
-      converter: (Store<DrawerStoreMixin> store) => store.state.activeDrawer,
+      converter: (Store<DrawerStore> store) => store.state.activeDrawer,
       builder: (context, drawer) => drawer,
     );
   }
 }
 
-/// Active Drawer
+/// Active Page
 class ActivePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<DrawerStoreMixin, DrawerDefinition>(
+    return new StoreConnector<DrawerStore, DrawerDefinition>(
       distinct: true,
-      converter: (Store<DrawerStoreMixin> store) => store.state.activePage,
+      converter: (Store<DrawerStore> store) => store.state.activePage,
       builder: (context, page) => page.builder(context),
     );
   }
 }
 
+/// Update drawer action
 class UpdateDrawerAction {
   final Widget newDrawer;
 
   UpdateDrawerAction(this.newDrawer);
 }
 
+/// drawer reducer
 final drawerReducer = combineTypedReducers<Widget>([
   new ReducerBinding<Widget, UpdateDrawerAction>(_activeDrawerReducer),
 ]);
@@ -51,12 +51,14 @@ Widget _activeDrawerReducer(Widget activeDrawer, UpdateDrawerAction action) {
   return action.newDrawer;
 }
 
+/// Change page action
 class ChangePageAction {
   final DrawerDefinition newPage;
 
   ChangePageAction(this.newPage);
 }
 
+/// page reducer
 final pageReducer = combineTypedReducers<DrawerDefinition>([
   new ReducerBinding<DrawerDefinition, ChangePageAction>(_activePageReducer),
 ]);

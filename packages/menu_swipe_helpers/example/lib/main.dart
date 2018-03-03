@@ -9,9 +9,11 @@ const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
 void main() => runApp(new MyApp());
 
 /// Create a Store with DrawerStoreMixin interface
-class AppState extends DrawerStoreMixin {
-  AppState({activeDrawer, activePage})
-      : super(activeDrawer: activeDrawer, activePage: activePage);
+class AppState implements DrawerStore {
+  final Widget activeDrawer;
+  final DrawerDefinition activePage;
+
+  AppState({this.activeDrawer, this.activePage});
 }
 
 AppState appReducer(AppState state, action) {
