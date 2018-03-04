@@ -8,6 +8,7 @@ environment:
   sdk: ">=1.8.0 <2.1.0"
 
 dependencies:
+  redux: ^2.0.2
   flutter_redux: "^0.3.5"
   flutter:
     sdk: flutter
