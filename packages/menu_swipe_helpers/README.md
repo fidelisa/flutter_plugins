@@ -5,7 +5,7 @@
 
 Helpers to create applications with menu swipe.
 
-[screenshot](https://ypelud.github.io/assets/img/swipe.gif)
+![screenshot](https://github.com/fidelisa/flutter_plugins/blob/master/packages/menu_swipe_helpers/swipe.gif?raw=true)
 
 Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/packages/menu_swipe_helpers/example) example.
 
