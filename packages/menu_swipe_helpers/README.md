@@ -5,6 +5,8 @@
 
 Helpers to create applications with menu swipe.
 
+![My helpful screenshot]({{ "https://ypelud.github.io/assets/img/swipe.gif" | absolute_url }})
+
 Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/packages/menu_swipe_helpers/example) example.
 
 ## Getting Started
