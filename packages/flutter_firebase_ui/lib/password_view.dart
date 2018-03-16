@@ -19,7 +19,7 @@ class _PasswordViewState extends State<PasswordView> {
   TextEditingController _controllerPassword;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     _controllerEmail = new TextEditingController(text: widget.email);
     _controllerPassword = new TextEditingController();
@@ -73,14 +73,18 @@ class _PasswordViewState extends State<PasswordView> {
           children: <Widget>[
             new FlatButton(
                 onPressed: () => _connexion(context),
-                child: new Text("CONNEXION")),
+                child: new Row(
+                  children: <Widget>[
+                    new Text("CONNEXION"),
+                  ],
+                )),
           ],
         )
       ],
     );
   }
 
-  void _handleLostPassword() {}
+  _handleLostPassword() {}
 
   _connexion(BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;

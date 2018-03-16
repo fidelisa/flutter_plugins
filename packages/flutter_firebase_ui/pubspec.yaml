@@ -10,12 +10,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_sign_in: "^2.1.0"
+  flutter_facebook_login: "^1.0.3"
   firebase_auth:
     git:
       url: git://github.com/ypelud/plugins
       path: packages/firebase_auth
 
 dev_dependencies:
-  test: '>=0.12.0 <=0.13.0'
+  test: ^0.12.0
   flutter_test:
     sdk: flutter
+
+
+flutter:
+  assets:
+   - assets/fb-logo.png
+   - assets/2.0x/fb-logo.png
+   - assets/3.0x/fb-logo.png
+
+   - assets/email-logo.png
+   - assets/2.0x/email-logo.png
+   - assets/3.0x/email-logo.png
+
+   - assets/go-logo.png
+   - assets/2.0x/go-logo.png
+   - assets/3.0x/go-logo.png

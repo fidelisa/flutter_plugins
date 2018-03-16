@@ -18,7 +18,7 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController _controllerPassword;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     _controllerEmail = new TextEditingController(text: widget.email);
     _controllerDisplayName = new TextEditingController();
@@ -78,16 +78,20 @@ class _SignUpViewState extends State<SignUpView> {
           alignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            new FlatButton(
+            new FlatButton (
                 onPressed: () => _connexion(context),
-                child: new Text("ENREGISTRER")),
+                child: new Row(
+                  children: <Widget>[
+                    new Text("ENREGISTRER"),
+                  ],
+                )),
           ],
         )
       ],
     );
   }
 
-  void _handleLostPassword() {}
+  _handleLostPassword() {}
 
   _connexion(BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;

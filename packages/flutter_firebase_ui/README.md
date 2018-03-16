@@ -1,4 +1,4 @@
-# firebase_ui_dart
+# flutter_firebase_ui
 
 WORK IN PROGRESS
 

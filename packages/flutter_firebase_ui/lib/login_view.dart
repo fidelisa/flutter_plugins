@@ -13,15 +13,13 @@ class LoginView extends StatefulWidget {
   LoginView({
     Key key,
     @required this.providers,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   _LoginViewState createState() => new _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Map<ProvidersTypes, ButtonDescription> _buttons;
@@ -56,7 +54,7 @@ class _LoginViewState extends State<LoginView> {
   _handleFacebookSignin() async {
     var facebookLogin = new FacebookLogin();
     FacebookLoginResult result =
-    await facebookLogin.logInWithReadPermissions(['email']);
+        await facebookLogin.logInWithReadPermissions(['email']);
     if (result.accessToken != null) {
       try {
         FirebaseUser user = await _auth.signInWithFacebook(
@@ -69,13 +67,13 @@ class _LoginViewState extends State<LoginView> {
   }
 
   @override
-  void initState() {
+  initState() {
     super.initState();
 
     _initButtonsList();
   }
 
-  void _initButtonsList() {
+  _initButtonsList() {
     _buttons = {
       ProvidersTypes.facebook: providersDefinitions[ProvidersTypes.facebook]
           .copyWith(onSelected: _handleFacebookSignin),
@@ -88,8 +86,10 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) => new Container(
-      child: new Column(
-          children: widget.providers.map((p) {
-            return _buttons[p] ?? new Container();
-          }).toList()));
+          child: new Column(
+              children: widget.providers.map((p) {
+        return new Container(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: _buttons[p] ?? new Container());
+      }).toList()));
 }

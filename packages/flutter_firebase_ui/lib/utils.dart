@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-
 enum ProvidersTypes { email, google, facebook, twitter, phone }
 
 ProvidersTypes stringToProvidersType(String value) {
@@ -14,7 +13,6 @@ ProvidersTypes stringToProvidersType(String value) {
 //TODO  if (value.toLowerCase().contains('phone')) return ProvidersTypes.phone;
   return null;
 }
-
 
 // Description button
 class ButtonDescription extends StatelessWidget {
@@ -27,11 +25,11 @@ class ButtonDescription extends StatelessWidget {
 
   const ButtonDescription(
       {@required this.logo,
-        @required this.label,
-        @required this.name,
-        this.onSelected,
-        this.labelColor = Colors.grey,
-        this.color = Colors.white});
+      @required this.label,
+      @required this.name,
+      this.onSelected,
+      this.labelColor = Colors.grey,
+      this.color = Colors.white});
 
   ButtonDescription copyWith({
     String label,
@@ -57,21 +55,18 @@ class ButtonDescription extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16.0),
       child: new RaisedButton(
           color: color,
-          child: new Container(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: new Row(
-              children: <Widget>[
-                new Container(
-                    padding: const EdgeInsets.only(left: 8.0, right: 32.0),
-                    child: new Image.asset('assets/$logo')),
-                new Expanded(
-                  child: new Text(
-                    label,
-                    style: new TextStyle(color: labelColor),
-                  ),
-                )
-              ],
-            ),
+          child: new Row(
+            children: <Widget>[
+              new Container(
+                  padding: const EdgeInsets.only(left: 8.0, right: 32.0),
+                  child: new Image.asset('assets/$logo')),
+              new Expanded(
+                child: new Text(
+                  label,
+                  style: new TextStyle(color: labelColor),
+                ),
+              )
+            ],
           ),
           onPressed: _onSelected),
     );
@@ -99,8 +94,7 @@ Map<ProvidersTypes, ButtonDescription> providersDefinitions = {
       labelColor: Colors.white),
 };
 
-
-Future<void> showErrorDialog(BuildContext context, exception) {
+Future<Null> showErrorDialog(BuildContext context, exception) {
   return showDialog<Null>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -115,7 +109,11 @@ Future<void> showErrorDialog(BuildContext context, exception) {
       ),
       actions: <Widget>[
         new FlatButton(
-          child: new Text('CANCEL'),
+          child: new Row(
+            children: <Widget>[
+              new Text('CANCEL'),
+            ],
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },

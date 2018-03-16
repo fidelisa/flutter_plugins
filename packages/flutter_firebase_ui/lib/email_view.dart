@@ -44,7 +44,11 @@ class _EmailViewState extends State<EmailView> {
         children: <Widget>[
           new FlatButton(
               onPressed: () => _connexion(context),
-              child: new Text("SUIVANT")),
+              child: new Row(
+                children: <Widget>[
+                  new Text("SUIVANT"),
+                ],
+              )),
         ],
       )
     ],
@@ -98,7 +102,11 @@ Connectez-vous avec ${_providersToString(providers)} pour continuer.
                 new Column(
                   children: providers.map((String p) {
                     return new RaisedButton(
-                      child: new Text(_providerStringToButton(p)),
+                      child: new Row(
+                        children: <Widget>[
+                          new Text(_providerStringToButton(p)),
+                        ],
+                      ),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -109,7 +117,11 @@ Connectez-vous avec ${_providersToString(providers)} pour continuer.
             )),
         actions: <Widget>[
           new FlatButton(
-            child: new Text('CANCEL'),
+            child: new Row(
+              children: <Widget>[
+                new Text('CANCEL'),
+              ],
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },
