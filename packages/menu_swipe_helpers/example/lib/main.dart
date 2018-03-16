@@ -154,7 +154,11 @@ Floating button
               onPressed: () => {
                     //TODO not implemented
                   },
-              child: new Text("BUTTON")),
+              child: new Row(
+                children: <Widget>[
+                  new Text("BUTTON"),
+                ],
+              )),
         ],
       )
     ];
@@ -227,7 +231,11 @@ TAP to open the drawer
               },
             ),
             new RaisedButton(
-                child: new Text("Change menu swipe"),
+                child: new Row(
+                  children: <Widget>[
+                    new Text("Change menu swipe"),
+                  ],
+                ),
                 onPressed: () {
                   updateDrawer(_drawerBuilder2);
                 })
@@ -257,8 +265,8 @@ class FourthPageDefinition implements DrawerDefinition {
 Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
       accountName: new Text("Yann-Cyril Pelud"),
       accountEmail: new Text("yann@fidelisa.com"),
-      currentAccountPicture: const CircleAvatar(
-        backgroundImage: const AssetImage(
+      currentAccountPicture: new CircleAvatar(
+        backgroundImage: new AssetImage(
           _kAsset0,
           package: _kGalleryAssetsPackage,
         ),
