@@ -60,7 +60,8 @@ class ButtonDescription extends StatelessWidget {
               new Container(
                   padding: const EdgeInsets.only(
                       top: 8.0, bottom: 8.0, left: 16.0, right: 32.0),
-                  child: new Image.asset('assets/$logo')),
+                  child: new Image.asset('assets/$logo',
+                      package: 'flutter_firebase_ui')),
               new Expanded(
                 child: new Text(
                   label,

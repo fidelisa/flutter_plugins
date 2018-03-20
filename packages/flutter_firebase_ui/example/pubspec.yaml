@@ -1,4 +1,4 @@
-name: flutter_firebase_ui
+name: flutter_firebase_ui_exemple
 description: A new Flutter project.
 
 dependencies:
@@ -12,7 +12,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_firebase_ui:
+      path: ../
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
