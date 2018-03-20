@@ -1,10 +1,10 @@
 library flutter_firebase_ui;
+
 export 'utils.dart';
 
 import 'package:flutter/material.dart';
 import 'login_view.dart';
 import 'utils.dart';
-
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({
@@ -12,12 +12,14 @@ class SignInScreen extends StatefulWidget {
     this.title,
     this.header,
     this.providers,
+    this.color = Colors.white,
   })
       : super(key: key);
 
   final String title;
   final Widget header;
   final List<ProvidersTypes> providers;
+  final Color color;
 
   @override
   _SignInScreenState createState() => new _SignInScreenState();
@@ -37,24 +39,16 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
       body: new Builder(
         builder: (BuildContext context) {
-          return new ListView(
+          return new Container(
               padding: const EdgeInsets.all(16.0),
-              children: <Widget>[
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _header,
-                    new LoginView(providers: _providers),
-                  ],
-                )
-              ]);
+              decoration: new BoxDecoration(color: widget.color),
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _header,
+                  new Expanded(child: new LoginView(providers: _providers)),
+                ],
+              ));
         },
       ));
 }
-
-
-
-
-
-
-

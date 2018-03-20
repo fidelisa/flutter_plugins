@@ -78,7 +78,7 @@ class _SignUpViewState extends State<SignUpView> {
           alignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            new FlatButton (
+            new FlatButton(
                 onPressed: () => _connexion(context),
                 child: new Row(
                   children: <Widget>[
@@ -104,13 +104,12 @@ class _SignUpViewState extends State<SignUpView> {
         var userUpdateInfo = new UserUpdateInfo();
         userUpdateInfo.displayName = _controllerDisplayName.text;
         _auth.updateProfile(userUpdateInfo);
-      } catch(exception) {
+      } catch (exception) {
         showErrorDialog(context, exception);
       }
       print(user);
     } catch (exception) {
       showErrorDialog(context, exception);
     }
-
   }
 }

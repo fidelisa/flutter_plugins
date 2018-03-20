@@ -58,7 +58,8 @@ class ButtonDescription extends StatelessWidget {
           child: new Row(
             children: <Widget>[
               new Container(
-                  padding: const EdgeInsets.only(left: 8.0, right: 32.0),
+                  padding: const EdgeInsets.only(
+                      top: 8.0, bottom: 8.0, left: 16.0, right: 32.0),
                   child: new Image.asset('assets/$logo')),
               new Expanded(
                 child: new Text(
