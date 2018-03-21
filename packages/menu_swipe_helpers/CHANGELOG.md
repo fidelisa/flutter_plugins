@@ -1,3 +1,7 @@
+## [0.2.1] - 21/03/2018
+* add createDrawerStore
+* add BaseDrawerDefinition
+
 ## [0.2.0] - 03/03/2018
 
 **BREAKING CHANGE**

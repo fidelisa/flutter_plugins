@@ -8,8 +8,29 @@ import 'package:redux/redux.dart';
 /// Store interface
 abstract class DrawerStore {
   Widget get activeDrawer;
+
   DrawerDefinition get activePage;
 }
+
+/// Create a Store with DrawerStoreMixin interface
+class DrawerState implements DrawerStore {
+  final Widget activeDrawer;
+  final DrawerDefinition activePage;
+
+  DrawerState({this.activeDrawer, this.activePage});
+}
+
+DrawerState drawerAppReducer(DrawerState state, action) {
+  return new DrawerState(
+      activeDrawer: drawerReducer(state.activeDrawer, action),
+      activePage: pageReducer(state.activePage, action));
+}
+
+createDrawerStore(DrawerHelper drawerHelper) =>
+    new Store<DrawerState>(drawerAppReducer,
+        initialState: new DrawerState(
+            activeDrawer: drawerHelper,
+            activePage: drawerHelper.drawerContents.first));
 
 /// Active Drawer
 class ActiveDrawer extends StatelessWidget {
@@ -66,6 +87,31 @@ final pageReducer = combineTypedReducers<DrawerDefinition>([
 DrawerDefinition _activePageReducer(
     DrawerDefinition activeDrawer, ChangePageAction action) {
   return action.newPage;
+}
+
+/// Interface that provides the basic elements of a menu
+class BaseDrawerDefinition extends DrawerDefinition {
+  /// The title of the menu
+  String title;
+
+  /// The icon of the menu
+  IconData iconData;
+
+  Icon get icon => new Icon(iconData);
+
+  /// The subtitle of the menu
+  String subtitle;
+
+  /// The builder of the page linked to the menu
+  WidgetBuilder widgetBuilder;
+
+  @override
+  Widget builder(BuildContext context) => widgetBuilder(context);
+
+  BaseDrawerDefinition(this.title, this.iconData, this.widgetBuilder, [this.subtitle])
+      : assert(title != null),
+        assert(iconData != null),
+        assert(widgetBuilder != null);
 }
 
 /// Interface that provides the basic elements of a menu
