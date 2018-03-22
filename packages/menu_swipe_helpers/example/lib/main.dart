@@ -31,14 +31,13 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPage extends State<FirstPage> with DrawerStateMixin {
-
   List<Widget> buildActions() => [
-    new IconButton(
-        icon: new Icon(Icons.chevron_right),
-        onPressed: () => Navigator.of(context).push(
-            new MaterialPageRoute<Null>(
-                builder: (BuildContext context) => new SecondPage()))),
-  ];
+        new IconButton(
+            icon: new Icon(Icons.chevron_right),
+            onPressed: () => Navigator.of(context).push(
+                new MaterialPageRoute<Null>(
+                    builder: (BuildContext context) => new SecondPage()))),
+      ];
 
   @override
   Widget buildBody() {
@@ -70,10 +69,6 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPage extends State<SecondPage> with DrawerStateMixin {
-
-
-
-
   @override
   Widget buildBody() {
     var _style = Theme.of(context).textTheme.subhead;
@@ -200,17 +195,25 @@ Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
     );
 
 var _firstPage = new DrawerDefinition(
-    "First page", Icons.home, (BuildContext context) => new FirstPage());
+    title: "First page",
+    iconData: Icons.home,
+    widgetBuilder: (BuildContext context) => new FirstPage());
 
 var _secondPage = new DrawerDefinition(
-    "Second page", Icons.store, (BuildContext context) => new SecondPage(),
+    title: "Second page",
+    iconData: Icons.store,
+    widgetBuilder: (BuildContext context) => new SecondPage(),
     hideDrawer: true);
 
 var _thirdPage = new DrawerDefinition(
-    "Third page", Icons.email, (BuildContext context) => new ThirdPage());
+    title: "Third page",
+    iconData: Icons.email,
+    widgetBuilder: (BuildContext context) => new ThirdPage());
 
 var _fourthPage = new DrawerDefinition(
-    "Fourth page", Icons.home, (BuildContext context) => new FirstPage());
+    title: "Fourth page",
+    iconData: Icons.home,
+    widgetBuilder: (BuildContext context) => new FirstPage());
 
 var _drawerBuilder = new DrawerHelper(
   drawerContents: [_firstPage, _secondPage, _thirdPage],
