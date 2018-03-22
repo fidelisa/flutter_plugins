@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// class that provides the basic elements of a menu
 @deprecated
-/// class that provides the basic elements of a menu
-class BaseDrawerDefinition {
-}
+class BaseDrawerDefinition {}
 
 /// class that provides the basic elements of a menu
-class DrawerDefinition  {
-
+class DrawerDefinition {
   /// The title of the menu
   String title;
 
@@ -28,6 +26,10 @@ class DrawerDefinition  {
   /// The builder of the page linked to the menu
   Widget builder(BuildContext context) => widgetBuilder(context);
 
-  DrawerDefinition(this.title, this.iconData, this.widgetBuilder,
-      {this.subtitle, this.hideDrawer = false});
+  DrawerDefinition(
+      {this.title,
+      this.iconData,
+      this.widgetBuilder,
+      this.subtitle,
+      this.hideDrawer = false});
 }

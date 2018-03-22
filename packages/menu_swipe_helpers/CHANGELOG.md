@@ -1,3 +1,7 @@
+## [0.2.3] - 22/03/2018
+**BREAKING CHANGE**
+* change DrawerDefinition constructor
+
 ## [0.2.2] - 22/03/2018
 * change DrawerDefinition to a class
 * deprecated BaseDrawerDefinition
