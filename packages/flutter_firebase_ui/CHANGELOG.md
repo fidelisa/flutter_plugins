@@ -1,3 +1,9 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.2] - 20/03/2018
 
-* TODO: Describe initial release.
+* improve ui
+* change firebase_auth version 
+
+## [0.0.1] - 19/03/2018
+
+* initial release
+
