@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
 import 'package:redux/redux.dart';
+import 'package:menu_swipe_helpers/containers/active_page.dart';
 
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
 
 void main() => runApp(new MyApp());
 
-
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,19 +25,24 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class FirstPage extends StatefulWidget {
   @override
   _FirstPage createState() => new _FirstPage();
 }
 
 class _FirstPage extends State<FirstPage> with DrawerStateMixin {
+
+  List<Widget> buildActions() => [
+    new IconButton(
+        icon: new Icon(Icons.chevron_right),
+        onPressed: () => Navigator.of(context).push(
+            new MaterialPageRoute<Null>(
+                builder: (BuildContext context) => new SecondPage()))),
+  ];
+
   @override
   Widget buildBody() {
-    var _style = Theme
-        .of(context)
-        .textTheme
-        .subhead;
+    var _style = Theme.of(context).textTheme.subhead;
     return new Container(
         decoration: new BoxDecoration(color: Colors.green),
         child: new Center(
@@ -66,12 +70,13 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPage extends State<SecondPage> with DrawerStateMixin {
+
+
+
+
   @override
   Widget buildBody() {
-    var _style = Theme
-        .of(context)
-        .textTheme
-        .subhead;
+    var _style = Theme.of(context).textTheme.subhead;
     return new Container(
         decoration: new BoxDecoration(color: Colors.red),
         child: new Center(
@@ -92,17 +97,6 @@ Floating button
         ));
   }
 
-  List<Widget> buildActions() =>
-      [
-        new IconButton(
-          icon: new Icon(Icons.edit),
-          onPressed: () =>
-          {
-            //TODO not implemented
-          },
-        ),
-      ];
-
   @override
   List<Widget> buildPersistentFooterButtons() {
     return [
@@ -111,10 +105,9 @@ Floating button
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           new FlatButton(
-              onPressed: () =>
-              {
-                //TODO not implemented
-              },
+              onPressed: () => {
+                    //TODO not implemented
+                  },
               child: new Row(
                 children: <Widget>[
                   new Text("BUTTON"),
@@ -129,16 +122,17 @@ Floating button
   Widget buildFloatingButton() {
     return new FloatingActionButton(
         child: new Icon(Icons.add),
-        onPressed: () =>
-        {
-          //TODO not implemented
-        });
+        onPressed: () => {
+              //TODO not implemented
+            });
   }
 
   @override
   String get title => "Second Page";
-}
 
+  @override
+  bool get hideDrawer => true;
+}
 
 class ThirdPage extends StatefulWidget {
   @override
@@ -155,10 +149,7 @@ class _ThirdPage extends State<ThirdPage> {
 
   @override
   Widget build(BuildContext context) {
-    var _style = Theme
-        .of(context)
-        .textTheme
-        .subhead;
+    var _style = Theme.of(context).textTheme.subhead;
 
     return new Scaffold(
       key: _scaffoldKey,
@@ -196,8 +187,7 @@ TAP to open the drawer
   }
 }
 
-Widget _userAccountDrawer(BuildContext context) =>
-    new UserAccountsDrawerHeader(
+Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
       accountName: new Text("Yann-Cyril Pelud"),
       accountEmail: new Text("yann@fidelisa.com"),
       currentAccountPicture: new CircleAvatar(
@@ -209,34 +199,24 @@ Widget _userAccountDrawer(BuildContext context) =>
       margin: EdgeInsets.zero,
     );
 
+var _firstPage = new DrawerDefinition(
+    "First page", Icons.home, (BuildContext context) => new FirstPage());
 
+var _secondPage = new DrawerDefinition(
+    "Second page", Icons.store, (BuildContext context) => new SecondPage(),
+    hideDrawer: true);
+
+var _thirdPage = new DrawerDefinition(
+    "Third page", Icons.email, (BuildContext context) => new ThirdPage());
+
+var _fourthPage = new DrawerDefinition(
+    "Fourth page", Icons.home, (BuildContext context) => new FirstPage());
 
 var _drawerBuilder = new DrawerHelper(
-  drawerContents: [
-    new BaseDrawerDefinition(
-        "First page", Icons.home, (BuildContext context) => new FirstPage()
-    ),
-    new BaseDrawerDefinition(
-        "Second page", Icons.store, (BuildContext context) => new SecondPage()
-    ),
-    new BaseDrawerDefinition(
-        "Third page", Icons.email, (BuildContext context) => new ThirdPage()
-    ),
-  ],
+  drawerContents: [_firstPage, _secondPage, _thirdPage],
   userAccountsDrawerHeader: _userAccountDrawer,
 );
 
-var _drawerBuilder2 = new DrawerHelper(drawerContents: [
-  new BaseDrawerDefinition(
-      "First page", Icons.home, (BuildContext context) => new FirstPage()
-  ),
-  new BaseDrawerDefinition(
-      "Second page", Icons.store, (BuildContext context) => new SecondPage()
-  ),
-  new BaseDrawerDefinition(
-      "Third page", Icons.email, (BuildContext context) => new ThirdPage()
-  ),
-  new BaseDrawerDefinition(
-      "Fourth page", Icons.phone, (BuildContext context) => new FirstPage()
-  ),
-], userAccountsDrawerHeader: _userAccountDrawer);
+var _drawerBuilder2 = new DrawerHelper(
+    drawerContents: [_firstPage, _secondPage, _thirdPage, _fourthPage],
+    userAccountsDrawerHeader: _userAccountDrawer);
