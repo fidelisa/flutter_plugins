@@ -1,3 +1,12 @@
+## [0.2.2] - 22/03/2018
+* change DrawerDefinition to a class
+* deprecated BaseDrawerDefinition
+* refactoring code
+
+## [0.2.1] - 21/03/2018
+* add createDrawerStore
+* add BaseDrawerDefinition
+
 ## [0.2.1] - 21/03/2018
 * add createDrawerStore
 * add BaseDrawerDefinition

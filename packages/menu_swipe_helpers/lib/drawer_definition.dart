@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-/// Interface that provides the basic elements of a menu
+@deprecated
+/// class that provides the basic elements of a menu
+class BaseDrawerDefinition {
+}
+
+/// class that provides the basic elements of a menu
 class DrawerDefinition  {
 
   /// The title of the menu
