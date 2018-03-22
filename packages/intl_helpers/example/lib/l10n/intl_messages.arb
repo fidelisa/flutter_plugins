@@ -1,0 +1,17 @@
+{
+  "@@last_modified": "2018-03-22T17:00:19.297438",
+  "_MyHomePageState_welcome": "Bienvenue, {name}",
+  "@_MyHomePageState_welcome": {
+    "description": "message de bienvenue avec nom",
+    "type": "text",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "welcomeGlobal": "Bienvenue à tous !",
+  "@welcomeGlobal": {
+    "description": "welcome message",
+    "type": "text",
+    "placeholders": {}
+  }
+}
