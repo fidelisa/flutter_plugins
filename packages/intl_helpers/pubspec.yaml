@@ -1,8 +1,11 @@
 name: intl_helpers
-description: A new flutter package project.
+description: Globalization made easier.
 version: 0.0.1
-author:
-homepage:
+author: Yann-Cyril Pelud <yann@fidelisa.com>
+homepage: https://github.com/fidelisa/flutter_plugins
+
+environment:
+  sdk: ">=1.8.0 <2.1.0"
 
 dependencies:
   flutter:
@@ -13,7 +16,10 @@ dependencies:
 
 
 dev_dependencies:
-  test: ^0.12.0
+  test: '>=0.12.0 <=0.13.0'
+  flutter_test:
+    sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
