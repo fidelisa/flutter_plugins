@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl_helpers/l10n/localizations.dart';
 
 class GenericHelperLocalizations {
@@ -24,15 +23,13 @@ class GenericHelperLocalizations {
 
   String get welcome => _translationBundle.welcome;
 
+  String get yesLabel => _translationBundle.yesLabel;
+
+  String get noLabel => _translationBundle.noLabel;
+
   static const LocalizationsDelegate<GenericHelperLocalizations> delegate =
       const _GenericHelperLocalizationsDelegate();
 
-  static const List<LocalizationsDelegate<dynamic>> delegates =
-      const <LocalizationsDelegate<dynamic>>[
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GenericHelperLocalizations.delegate
-  ];
 }
 
 class _GenericHelperLocalizationsDelegate

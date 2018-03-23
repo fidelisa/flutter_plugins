@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
       title: 'Intl Helper Example',
       locale: new Locale('fr', 'FR'),
 //      locale: new Locale('en', 'US'),
-      localizationsDelegates: AppHelperLocalizations.list(
+      localizationsDelegates: createBasicLocalizationsDelegates(
           supportedLanguages: ['fr', 'en'],
           initializeMessages: initializeMessages),
       supportedLocales: [
-        const Locale('en', 'US'), // English
-        const Locale('fr', 'FR'), // French
+        new Locale('en', 'US'), // English
+        new Locale('fr', 'FR'), // French
       ],
       theme: new ThemeData(
         primarySwatch: Colors.blue,
