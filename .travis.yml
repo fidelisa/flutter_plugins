@@ -17,7 +17,8 @@ matrix:
         - git clone https://github.com/flutter/flutter.git --depth 1
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor
-        - pub global activate flutter_plugin_tools
+        - pub global activate --source git https://github.com/ypelud/plugin_tools
+        # - pub global activate flutter_plugin_tools
       script:
         - ./script/plugin_tools.sh analyze
     # Job 2) Check format and run tests
