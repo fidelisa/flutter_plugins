@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Intl Helper Example',
-      locale: new Locale('fr', 'FR'),
-//      locale: new Locale('en', 'US'),
+//      locale: new Locale('fr', 'FR'),
+      locale: new Locale('en', 'US'),
       localizationsDelegates: createBasicLocalizationsDelegates(
           supportedLanguages: ['fr', 'en'],
           initializeMessages: initializeMessages),
@@ -69,6 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             new Text(
               GlobalMessage.instance.welcomeGlobal,
+              style: Theme.of(context).textTheme.display1,
+            ),
+            new SizedBox(
+              height: 32.0,
+            ),
+            new Text(
+              MaterialLocalizations.of(context).signedInLabel,
               style: Theme.of(context).textTheme.display1,
             ),
           ],
