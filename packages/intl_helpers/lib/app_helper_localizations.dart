@@ -30,7 +30,6 @@ class AppHelperLocalizations {
         supportedLanguages: supportedLanguages,
         initializeMessages: initializeMessages);
   }
-
 }
 
 class _AppHelperLocalizationsDelegate
@@ -52,5 +51,3 @@ class _AppHelperLocalizationsDelegate
   @override
   bool shouldReload(_AppHelperLocalizationsDelegate old) => false;
 }
-
-

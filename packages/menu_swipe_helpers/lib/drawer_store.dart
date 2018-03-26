@@ -10,9 +10,9 @@ abstract class DrawerStore {
   DrawerDefinition get activePage;
 }
 
-createDrawerStore(DrawerHelper drawerHelper) =>
-    new Store<DrawerState>(drawerAppReducer,
-        initialState: new DrawerState(
-            activeDrawer: drawerHelper,
-            activePage: drawerHelper.drawerContents.first),
+createDrawerStore(DrawerHelper drawerHelper) => new Store<DrawerState>(
+      drawerAppReducer,
+      initialState: new DrawerState(
+          activeDrawer: drawerHelper,
+          activePage: drawerHelper.drawerContents.first),
     );

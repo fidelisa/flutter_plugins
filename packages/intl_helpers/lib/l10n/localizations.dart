@@ -9,26 +9,29 @@ class TranslationBundle {
   String get noLabel => parent?.noLabel;
 }
 
-
 // ignore: camel_case_types
 class _Bundle_fr extends TranslationBundle {
   const _Bundle_fr() : super(null);
 
-  @override String get welcome => r'Bienvenue !';
-  @override String get yesLabel => r'OUI';
-  @override String get noLabel => r'NON';
+  @override
+  String get welcome => r'Bienvenue !';
+  @override
+  String get yesLabel => r'OUI';
+  @override
+  String get noLabel => r'NON';
 }
 
 // ignore: camel_case_types
 class _Bundle_en extends TranslationBundle {
   const _Bundle_en() : super(null);
 
-  @override String get welcome => r'Welcome !';
-  @override String get yesLabel => r'YES';
-  @override String get noLabel => r'NO';
-
+  @override
+  String get welcome => r'Welcome !';
+  @override
+  String get yesLabel => r'YES';
+  @override
+  String get noLabel => r'NO';
 }
-
 
 TranslationBundle translationBundleForLocale(Locale locale) {
   switch (locale.languageCode) {

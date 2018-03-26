@@ -20,8 +20,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static m0(name) => "Welcome, $name";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "_MyHomePageState_welcome" : m0,
-    "welcomeGlobal" : MessageLookupByLibrary.simpleMessage("Welcome everyone !")
-  };
+  static _notInlinedMessages(_) => <String, Function>{
+        "_MyHomePageState_welcome": m0,
+        "welcomeGlobal":
+            MessageLookupByLibrary.simpleMessage("Welcome everyone !")
+      };
 }

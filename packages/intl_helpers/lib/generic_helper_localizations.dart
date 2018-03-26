@@ -29,7 +29,6 @@ class GenericHelperLocalizations {
 
   static const LocalizationsDelegate<GenericHelperLocalizations> delegate =
       const _GenericHelperLocalizationsDelegate();
-
 }
 
 class _GenericHelperLocalizationsDelegate

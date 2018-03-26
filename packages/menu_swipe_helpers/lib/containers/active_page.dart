@@ -4,7 +4,6 @@ import 'package:menu_swipe_helpers/drawer_definition.dart';
 import 'package:menu_swipe_helpers/drawer_store.dart';
 import 'package:redux/redux.dart';
 
-
 /// Active Page
 class ActivePage extends StatelessWidget {
   @override
@@ -16,4 +15,3 @@ class ActivePage extends StatelessWidget {
     );
   }
 }
-
