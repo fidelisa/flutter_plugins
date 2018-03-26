@@ -10,7 +10,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Flutter/flutter_assets/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/example/.pub" />
