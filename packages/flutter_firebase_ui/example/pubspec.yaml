@@ -4,7 +4,6 @@ description: A new Flutter project.
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: "^0.5.2"
   flutter_firebase_ui:
       path: ../
 
