@@ -13,7 +13,8 @@ class LoginView extends StatefulWidget {
   LoginView({
     Key key,
     @required this.providers,
-  }) : super(key: key);
+  })
+      : super(key: key);
 
   @override
   _LoginViewState createState() => new _LoginViewState();

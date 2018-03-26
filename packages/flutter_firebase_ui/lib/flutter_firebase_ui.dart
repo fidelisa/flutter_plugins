@@ -13,7 +13,8 @@ class SignInScreen extends StatefulWidget {
     this.header,
     this.providers,
     this.color = Colors.white,
-  }) : super(key: key);
+  })
+      : super(key: key);
 
   final String title;
   final Widget header;
