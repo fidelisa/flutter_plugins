@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'l10n/localization.dart';
+import 'trouble_signin.dart';
 import 'utils.dart';
 
 class PasswordView extends StatefulWidget {
@@ -28,7 +30,7 @@ class _PasswordViewState extends State<PasswordView> {
     _controllerEmail.text = widget.email;
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Connexion"),
+        title: new Text(FFULocalizations.of(context).signInTitle),
         elevation: 4.0,
       ),
       body: new Builder(
@@ -41,21 +43,22 @@ class _PasswordViewState extends State<PasswordView> {
                   controller: _controllerEmail,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: 'Adresse mail'),
+                  decoration: new InputDecoration(
+                      labelText: FFULocalizations.of(context).emailLabel),
                 ),
                 //const SizedBox(height: 5.0),
                 new TextField(
                   controller: _controllerPassword,
                   obscureText: true,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: 'Mot de passe'),
+                  decoration: new InputDecoration(labelText: FFULocalizations.of(context).passwordLabel),
                 ),
                 new SizedBox(height: 16.0),
                 new Container(
                     alignment: Alignment.centerLeft,
                     child: new InkWell(
                         child: new Text(
-                          "Difficultés à se connecter ?",
+                          FFULocalizations.of(context).troubleSigningInLabel,
                           style: Theme.of(context).textTheme.caption,
                         ),
                         onTap: _handleLostPassword)),
@@ -73,7 +76,7 @@ class _PasswordViewState extends State<PasswordView> {
                 onPressed: () => _connexion(context),
                 child: new Row(
                   children: <Widget>[
-                    new Text("CONNEXION"),
+                    new Text(FFULocalizations.of(context).signInLabel),
                   ],
                 )),
           ],
@@ -82,7 +85,13 @@ class _PasswordViewState extends State<PasswordView> {
     );
   }
 
-  _handleLostPassword() {}
+  _handleLostPassword() {
+    Navigator
+        .of(context)
+        .push(new MaterialPageRoute<Null>(builder: (BuildContext context) {
+      return new TroubleSignIn(_controllerEmail.text);
+    }));
+  }
 
   _connexion(BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -92,7 +101,9 @@ class _PasswordViewState extends State<PasswordView> {
           email: _controllerEmail.text, password: _controllerPassword.text);
       print(user);
     } catch (exception) {
-      showErrorDialog(context, exception);
+      //TODO improve errors catching
+      String msg = FFULocalizations.of(context).passwordInvalidMessage;
+      showErrorDialog(context, msg);
     }
 
     if (user != null) {

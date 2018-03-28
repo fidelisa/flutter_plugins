@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import 'l10n/localization.dart';
 import 'utils.dart';
 
 class SignUpView extends StatefulWidget {
@@ -16,6 +18,8 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController _controllerEmail;
   TextEditingController _controllerDisplayName;
   TextEditingController _controllerPassword;
+
+  bool _valid = false;
 
   @override
   initState() {
@@ -43,31 +47,26 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: _controllerEmail,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: 'Adresse mail'),
+                  decoration: new InputDecoration(
+                      labelText: FFULocalizations.of(context).emailLabel),
                 ),
                 const SizedBox(height: 8.0),
                 new TextField(
                   controller: _controllerDisplayName,
                   keyboardType: TextInputType.text,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: 'Nom et Prénom'),
+                  onChanged: _checkValid,
+                  decoration: new InputDecoration(
+                      labelText: FFULocalizations.of(context).nameLabel),
                 ),
                 const SizedBox(height: 8.0),
                 new TextField(
                   controller: _controllerPassword,
                   obscureText: true,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: 'Mot de passe'),
+                  decoration: new InputDecoration(
+                      labelText: FFULocalizations.of(context).passwordLabel),
                 ),
-                new SizedBox(height: 16.0),
-                new Container(
-                    alignment: Alignment.centerLeft,
-                    child: new InkWell(
-                        child: new Text(
-                          "Difficultés à se connecter ?",
-                          style: Theme.of(context).textTheme.caption,
-                        ),
-                        onTap: _handleLostPassword)),
               ],
             ),
           );
@@ -79,10 +78,10 @@ class _SignUpViewState extends State<SignUpView> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             new FlatButton(
-                onPressed: () => _connexion(context),
+                onPressed: _valid ? () => _connexion(context) : null,
                 child: new Row(
                   children: <Widget>[
-                    new Text("ENREGISTRER"),
+                    new Text(FFULocalizations.of(context).saveLabel),
                   ],
                 )),
           ],
@@ -91,12 +90,10 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
-  _handleLostPassword() {}
-
   _connexion(BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
-      FirebaseUser user = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
@@ -104,12 +101,20 @@ class _SignUpViewState extends State<SignUpView> {
         var userUpdateInfo = new UserUpdateInfo();
         userUpdateInfo.displayName = _controllerDisplayName.text;
         _auth.updateProfile(userUpdateInfo);
-      } catch (exception) {
-        showErrorDialog(context, exception);
+      } catch (e) {
+        showErrorDialog(context, e.details);
       }
-      print(user);
-    } catch (exception) {
-      showErrorDialog(context, exception);
+    } on PlatformException catch (e) {
+      print(e.details);
+      //TODO improve errors catching
+      String msg = FFULocalizations.of(context).passwordLengthMessage;
+      showErrorDialog(context, msg);
     }
+  }
+
+  void _checkValid(String value) {
+    setState(() {
+      _valid = _controllerDisplayName.text.isNotEmpty;
+    });
   }
 }

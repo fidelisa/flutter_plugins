@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import 'l10n/localization.dart';
+
 enum ProvidersTypes { email, google, facebook, twitter, phone }
 
 ProvidersTypes stringToProvidersType(String value) {
@@ -75,37 +77,40 @@ class ButtonDescription extends StatelessWidget {
   }
 }
 
-Map<ProvidersTypes, ButtonDescription> providersDefinitions = {
-  ProvidersTypes.facebook: const ButtonDescription(
-      color: const Color.fromRGBO(59, 87, 157, 1.0),
-      logo: "fb-logo.png",
-      label: "Connexion avec Facebook",
-      name: "Facebook",
-      labelColor: Colors.white),
-  ProvidersTypes.google: const ButtonDescription(
-      color: Colors.white,
-      logo: "go-logo.png",
-      label: "Connexion avec Google",
-      name: "Google",
-      labelColor: Colors.grey),
-  ProvidersTypes.email: const ButtonDescription(
-      color: const Color.fromRGBO(219, 68, 55, 1.0),
-      logo: "email-logo.png",
-      label: "Connexion avec email",
-      name: "Email",
-      labelColor: Colors.white),
-};
+Map<ProvidersTypes, ButtonDescription> providersDefinitions(
+        BuildContext context) =>
+    {
+      ProvidersTypes.facebook: new ButtonDescription(
+          color: const Color.fromRGBO(59, 87, 157, 1.0),
+          logo: "fb-logo.png",
+          label: FFULocalizations.of(context).signInFacebook,
+          name: "Facebook",
+          labelColor: Colors.white),
+      ProvidersTypes.google: new ButtonDescription(
+          color: Colors.white,
+          logo: "go-logo.png",
+          label: FFULocalizations.of(context).signInGoogle,
+          name: "Google",
+          labelColor: Colors.grey),
+      ProvidersTypes.email: new ButtonDescription(
+          color: const Color.fromRGBO(219, 68, 55, 1.0),
+          logo: "email-logo.png",
+          label: FFULocalizations.of(context).signInEmail,
+          name: "Email",
+          labelColor: Colors.white),
+    };
 
-Future<Null> showErrorDialog(BuildContext context, exception) {
+Future<Null> showErrorDialog(BuildContext context, String message,
+    {String title}) {
   return showDialog<Null>(
     context: context,
     barrierDismissible: false, // user must tap button!
     child: new AlertDialog(
-      title: new Text('Vous avez déjà un compte'),
+      title: title != null ? new Text(title) : null,
       content: new SingleChildScrollView(
         child: new ListBody(
           children: <Widget>[
-            new Text(exception.toString()),
+            new Text(message),
           ],
         ),
       ),
@@ -113,7 +118,7 @@ Future<Null> showErrorDialog(BuildContext context, exception) {
         new FlatButton(
           child: new Row(
             children: <Widget>[
-              new Text('CANCEL'),
+              new Text(FFULocalizations.of(context).cancelButtonLabel),
             ],
           ),
           onPressed: () {

@@ -37,17 +37,19 @@ class _LoginViewState extends State<LoginView> {
     GoogleSignIn _googleSignIn = new GoogleSignIn();
 
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    if (googleAuth.accessToken != null) {
-      try {
-        FirebaseUser user = await _auth.signInWithGoogle(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
+    if (googleUser != null) {
+      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      if (googleAuth.accessToken != null) {
+        try {
+          FirebaseUser user = await _auth.signInWithGoogle(
+            accessToken: googleAuth.accessToken,
+            idToken: googleAuth.idToken,
+          );
 
-        print(user);
-      } catch (exception) {
-        showErrorDialog(context, exception);
+          print(user);
+        } catch (e) {
+          showErrorDialog(context, e.message);
+        }
       }
     }
   }
@@ -61,36 +63,31 @@ class _LoginViewState extends State<LoginView> {
         FirebaseUser user = await _auth.signInWithFacebook(
             accessToken: result.accessToken.token);
         print(user);
-      } catch (exception) {
-        showErrorDialog(context, exception);
+      } catch (e) {
+        showErrorDialog(context, e.message);
       }
     }
   }
 
   @override
-  initState() {
-    super.initState();
-
-    _initButtonsList();
-  }
-
-  _initButtonsList() {
+  Widget build(BuildContext context) {
     _buttons = {
-      ProvidersTypes.facebook: providersDefinitions[ProvidersTypes.facebook]
-          .copyWith(onSelected: _handleFacebookSignin),
-      ProvidersTypes.google: providersDefinitions[ProvidersTypes.google]
-          .copyWith(onSelected: _handleGoogleSignin),
-      ProvidersTypes.email: providersDefinitions[ProvidersTypes.email]
+      ProvidersTypes.facebook:
+          providersDefinitions(context)[ProvidersTypes.facebook]
+              .copyWith(onSelected: _handleFacebookSignin),
+      ProvidersTypes.google:
+          providersDefinitions(context)[ProvidersTypes.google]
+              .copyWith(onSelected: _handleGoogleSignin),
+      ProvidersTypes.email: providersDefinitions(context)[ProvidersTypes.email]
           .copyWith(onSelected: _handleEmailSignin),
     };
-  }
 
-  @override
-  Widget build(BuildContext context) => new Container(
-          child: new Column(
-              children: widget.providers.map((p) {
-        return new Container(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: _buttons[p] ?? new Container());
-      }).toList()));
+    return new Container(
+        child: new Column(
+            children: widget.providers.map((p) {
+      return new Container(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: _buttons[p] ?? new Container());
+    }).toList()));
+  }
 }

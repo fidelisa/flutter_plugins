@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'l10n/localization.dart';
 import 'password_view.dart';
 import 'sign_up_view.dart';
 import 'utils.dart';
@@ -16,7 +17,7 @@ class _EmailViewState extends State<EmailView> {
   @override
   Widget build(BuildContext context) => new Scaffold(
         appBar: new AppBar(
-          title: new Text("Bienvenue"),
+          title: new Text(FFULocalizations.of(context).welcome),
           elevation: 4.0,
         ),
         body: new Builder(
@@ -29,7 +30,8 @@ class _EmailViewState extends State<EmailView> {
                     controller: _controllerEmail,
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
-                    decoration: new InputDecoration(labelText: 'Adresse mail'),
+                    decoration: new InputDecoration(
+                        labelText: FFULocalizations.of(context).emailLabel),
                   ),
                 ],
               ),
@@ -45,7 +47,7 @@ class _EmailViewState extends State<EmailView> {
                   onPressed: () => _connexion(context),
                   child: new Row(
                     children: <Widget>[
-                      new Text("SUIVANT"),
+                      new Text(FFULocalizations.of(context).nextButtonLabel),
                     ],
                   )),
             ],
@@ -85,18 +87,18 @@ class _EmailViewState extends State<EmailView> {
   }
 
   _showDialogSelectOtherProvider(String email, List<String> providers) {
+    var providerName = _providersToString(providers);
     return showDialog<Null>(
       context: context,
       barrierDismissible: false, // user must tap button!
       child: new AlertDialog(
-        title: new Text('Vous avez déjà un compte'),
         content: new SingleChildScrollView(
             child: new ListBody(
           children: <Widget>[
-            new Text('''
-Vous avez déjà utilisé $email.
-Connectez-vous avec ${_providersToString(providers)} pour continuer.
-          '''),
+            new Text(FFULocalizations
+                .of(context)
+                .allReadyEmailMessage(email, providerName)),
+            new SizedBox(height: 16.0,),
             new Column(
               children: providers.map((String p) {
                 return new RaisedButton(
@@ -117,7 +119,7 @@ Connectez-vous avec ${_providersToString(providers)} pour continuer.
           new FlatButton(
             child: new Row(
               children: <Widget>[
-                new Text('CANCEL'),
+                new Text(FFULocalizations.of(context).cancelButtonLabel),
               ],
             ),
             onPressed: () {
@@ -132,12 +134,12 @@ Connectez-vous avec ${_providersToString(providers)} pour continuer.
   String _providersToString(List<String> providers) {
     return providers.map((String provider) {
       ProvidersTypes type = stringToProvidersType(provider);
-      return providersDefinitions[type]?.name;
+      return providersDefinitions(context)[type]?.name;
     }).join(", ");
   }
 
   String _providerStringToButton(String provider) {
     ProvidersTypes type = stringToProvidersType(provider);
-    return providersDefinitions[type]?.label;
+    return providersDefinitions(context)[type]?.label;
   }
 }
