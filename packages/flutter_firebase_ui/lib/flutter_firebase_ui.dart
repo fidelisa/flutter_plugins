@@ -31,6 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
   List<ProvidersTypes> get _providers =>
       widget.providers ?? [ProvidersTypes.email];
 
+
   @override
   Widget build(BuildContext context) => new Scaffold(
       appBar: new AppBar(

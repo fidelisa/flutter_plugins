@@ -25,15 +25,20 @@ class _LoginViewState extends State<LoginView> {
 
   Map<ProvidersTypes, ButtonDescription> _buttons;
 
-  _handleEmailSignin() async {
-    await Navigator
+  _handleEmailSignIn() async {
+    String value = await Navigator
         .of(context)
-        .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
+        .push(new MaterialPageRoute<String>(builder: (BuildContext context) {
       return new EmailView();
     }));
+
+    if (value.isNotEmpty) {
+      _followProvider(value);
+    }
+
   }
 
-  _handleGoogleSignin() async {
+  _handleGoogleSignIn() async {
     GoogleSignIn _googleSignIn = new GoogleSignIn();
 
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -48,7 +53,7 @@ class _LoginViewState extends State<LoginView> {
 
           print(user);
         } catch (e) {
-          showErrorDialog(context, e.message);
+          showErrorDialog(context, e.details);
         }
       }
     }
@@ -64,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
             accessToken: result.accessToken.token);
         print(user);
       } catch (e) {
-        showErrorDialog(context, e.message);
+        showErrorDialog(context, e.details);
       }
     }
   }
@@ -77,9 +82,9 @@ class _LoginViewState extends State<LoginView> {
               .copyWith(onSelected: _handleFacebookSignin),
       ProvidersTypes.google:
           providersDefinitions(context)[ProvidersTypes.google]
-              .copyWith(onSelected: _handleGoogleSignin),
+              .copyWith(onSelected: _handleGoogleSignIn),
       ProvidersTypes.email: providersDefinitions(context)[ProvidersTypes.email]
-          .copyWith(onSelected: _handleEmailSignin),
+          .copyWith(onSelected: _handleEmailSignIn),
     };
 
     return new Container(
@@ -89,5 +94,14 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: _buttons[p] ?? new Container());
     }).toList()));
+  }
+
+  void _followProvider(String value) {
+    ProvidersTypes provider = stringToProvidersType(value);
+    if (provider == ProvidersTypes.facebook) {
+      _handleFacebookSignin();
+    } else if (provider == ProvidersTypes.google) {
+      _handleGoogleSignIn();
+    }
   }
 }

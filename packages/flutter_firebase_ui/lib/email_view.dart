@@ -79,7 +79,11 @@ class _EmailViewState extends State<EmailView> {
           Navigator.pop(context, true);
         }
       } else {
-        _showDialogSelectOtherProvider(_controllerEmail.text, providers);
+        String provider = await _showDialogSelectOtherProvider(
+            _controllerEmail.text, providers);
+        if (provider.isNotEmpty) {
+          Navigator.pop(context, provider);
+        }
       }
     } catch (exception) {
       print(exception);
@@ -98,7 +102,9 @@ class _EmailViewState extends State<EmailView> {
             new Text(FFULocalizations
                 .of(context)
                 .allReadyEmailMessage(email, providerName)),
-            new SizedBox(height: 16.0,),
+            new SizedBox(
+              height: 16.0,
+            ),
             new Column(
               children: providers.map((String p) {
                 return new RaisedButton(
@@ -108,7 +114,7 @@ class _EmailViewState extends State<EmailView> {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(p);
                   },
                 );
               }).toList(),
