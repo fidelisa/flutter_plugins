@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
       return new EmailView();
     }));
 
-    if (value.isNotEmpty) {
+    if (value != null) {
       _followProvider(value);
     }
 
