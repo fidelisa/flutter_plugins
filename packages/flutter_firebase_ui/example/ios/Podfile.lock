@@ -68,14 +68,14 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - firebase_auth (from `Pods/.symlinks/plugins/firebase_auth/ios`)
+  - firebase_auth (from `Pods/.symlinks/plugins/firebase_auth-0.5.3/ios`)
   - Flutter (from `Pods/.symlinks/flutter/ios`)
   - flutter_facebook_login (from `Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/ios`)
   - google_sign_in (from `Pods/.symlinks/plugins/google_sign_in-2.1.2/ios`)
 
 EXTERNAL SOURCES:
   firebase_auth:
-    :path: Pods/.symlinks/plugins/firebase_auth/ios
+    :path: Pods/.symlinks/plugins/firebase_auth-0.5.3/ios
   Flutter:
     :path: Pods/.symlinks/flutter/ios
   flutter_facebook_login:
