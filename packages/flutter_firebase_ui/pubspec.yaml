@@ -10,10 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth:
-    git:
-      url: https://github.com/ypelud/plugins
-      path: packages/firebase_auth
+  firebase_auth: "^0.5.3"
 
   google_sign_in: "^2.1.0"
   flutter_facebook_login: "^1.0.3"
