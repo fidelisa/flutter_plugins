@@ -13,8 +13,7 @@ class LoginView extends StatefulWidget {
   LoginView({
     Key key,
     @required this.providers,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   _LoginViewState createState() => new _LoginViewState();
@@ -35,7 +34,6 @@ class _LoginViewState extends State<LoginView> {
     if (value != null) {
       _followProvider(value);
     }
-
   }
 
   _handleGoogleSignIn() async {

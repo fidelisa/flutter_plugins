@@ -51,7 +51,8 @@ class _PasswordViewState extends State<PasswordView> {
                   controller: _controllerPassword,
                   obscureText: true,
                   autocorrect: false,
-                  decoration: new InputDecoration(labelText: FFULocalizations.of(context).passwordLabel),
+                  decoration: new InputDecoration(
+                      labelText: FFULocalizations.of(context).passwordLabel),
                 ),
                 new SizedBox(height: 16.0),
                 new Container(

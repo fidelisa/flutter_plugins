@@ -13,8 +13,7 @@ class SignInScreen extends StatefulWidget {
     this.header,
     this.providers,
     this.color = Colors.white,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   final String title;
   final Widget header;
@@ -30,7 +29,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   List<ProvidersTypes> get _providers =>
       widget.providers ?? [ProvidersTypes.email];
-
 
   @override
   Widget build(BuildContext context) => new Scaffold(

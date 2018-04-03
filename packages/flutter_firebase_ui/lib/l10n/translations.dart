@@ -97,7 +97,7 @@ Connectez-vous avec $providerName pour continuer.''';
 
   @override
   recoverDialog(String email) {
-    return 'Suivez les instructions envoyées à $email '+
+    return 'Suivez les instructions envoyées à $email ' +
         'pour retrouver votre mot de passe';
   }
 
@@ -112,7 +112,6 @@ Connectez-vous avec $providerName pour continuer.''';
 
   @override
   String get signInEmail => r'Connexion avec email';
-
 }
 
 // ignore: camel_case_types
@@ -181,7 +180,6 @@ Sign in with $providerName to continue.''';
 
   @override
   String get signInEmail => r'Sign in with email';
-
 }
 
 TranslationBundle translationBundleForLocale(Locale locale) {
