@@ -106,12 +106,15 @@ class HomeScreen extends StatelessWidget {
                   new Text("Welcome,"),
                 ],
               ),
-              new SizedBox(height: 8.0,),
+              new SizedBox(
+                height: 8.0,
+              ),
               new Text(user.displayName),
-              new SizedBox(height: 32.0,),
+              new SizedBox(
+                height: 32.0,
+              ),
               new RaisedButton(
-                child: new Text("DECONNEXION"),
-                  onPressed: _logout)
+                  child: new Text("DECONNEXION"), onPressed: _logout)
             ],
           )));
 

@@ -1,4 +1,4 @@
-package com.example.flutterfirebaseui;
+package com.fidelisa.flutterplugins;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

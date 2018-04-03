@@ -19,6 +19,14 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/example/.pub" />
