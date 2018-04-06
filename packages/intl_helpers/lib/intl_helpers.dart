@@ -7,6 +7,7 @@ import 'package:intl_helpers/generic_helper_localizations.dart';
 
 export 'app_helper_localizations.dart';
 export 'generic_helper_localizations.dart';
+export 'localization_listener.dart';
 
 List<LocalizationsDelegate<dynamic>> createBasicLocalizationsDelegates(
     {List<String> supportedLanguages, InitializeMessages initializeMessages}) {

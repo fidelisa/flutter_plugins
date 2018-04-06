@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_helpers/intl_helpers.dart';
+
 import 'l10n/messages_all.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  LocaleNotifier.init(
+      locale: new Locale('fr', 'FR'), initializeMessages: initializeMessages);
+  runApp(new MyApp());
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    LocaleNotifier.instance.addListener(() {
+      setState(() {});
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Intl Helper Example',
-//      locale: new Locale('fr', 'FR'),
-      locale: new Locale('en', 'US'),
+      locale: LocaleNotifier.instance.locale,
       localizationsDelegates: createBasicLocalizationsDelegates(
           supportedLanguages: ['fr', 'en'],
           initializeMessages: initializeMessages),
@@ -38,10 +55,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String localeName = 'FR';
+
   String welcome(name) => Intl.message('Bienvenue, $name',
       name: "_MyHomePageState_welcome",
       args: [name],
       desc: 'message de bienvenue avec nom');
+
+  @override
+  void initState() {
+    super.initState();
+    LocaleNotifier.instance.addListener(() {
+      setState(() {
+        localeName = LocaleNotifier.instance.locale.languageCode.toUpperCase();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +110,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: new FloatingActionButton(
+        child: new Text(localeName),
+        onPressed: _toggleLocale,
+      ),
     );
+  }
+
+  void _toggleLocale() {
+    if (LocaleNotifier.instance.locale.languageCode == 'fr') {
+      LocaleNotifier.instance.update(new Locale('en', 'US'));
+    } else {
+      LocaleNotifier.instance.update(new Locale('fr', 'FR'));
+    }
   }
 }
 

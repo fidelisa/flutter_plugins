@@ -4,7 +4,7 @@
 
 Helpers to handle basic globalization.
 
-Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/packages/intl_helpers/example) example.
+Show [intl_helper](https://github.com/fidelisa/flutter_plugins/tree/master/packages/intl_helpers/example) example.
 
 ## Getting Started
 

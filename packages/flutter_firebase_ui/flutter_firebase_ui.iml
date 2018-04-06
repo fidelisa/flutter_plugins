@@ -5,12 +5,13 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Flutter/flutter_assets/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/example/.pub" />
@@ -19,8 +20,10 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/.pub" />
@@ -31,12 +34,16 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/build" />
     </content>
