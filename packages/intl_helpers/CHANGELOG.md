@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.2] - 06-04-2018
 
-* TODO: Describe initial release.
+* add LocaleListener
+
+## [0.0.1] - 30-03-2018
+
+* init project
