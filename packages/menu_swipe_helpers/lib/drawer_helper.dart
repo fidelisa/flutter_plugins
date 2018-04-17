@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:menu_swipe_helpers/actions/actions.dart';
 import 'package:menu_swipe_helpers/drawer_definition.dart';
+import 'package:menu_swipe_helpers/drawer_state.dart';
 import 'package:redux/redux.dart';
 
 /// Drawer helper
@@ -120,7 +121,7 @@ class _DrawerHelperState extends State<DrawerHelper>
           }));
     } else {
       Navigator.of(context).pop();
-      Store store = new StoreProvider.of(context).store;
+      Store store = StoreProvider.of<DrawerState>(context);
       store.dispatch(new ChangePageAction(f));
     }
   }

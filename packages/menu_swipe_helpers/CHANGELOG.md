@@ -1,3 +1,7 @@
+## [0.3.0] - 22/03/2018
+**BREAKING CHANGE**
+* dart 2 strong types
+
 ## [0.2.3] - 22/03/2018
 **BREAKING CHANGE**
 * change DrawerDefinition constructor

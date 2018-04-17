@@ -3,8 +3,8 @@ import 'package:menu_swipe_helpers/drawer_definition.dart';
 import 'package:redux/redux.dart';
 
 /// page reducer
-final pageReducer = combineTypedReducers<DrawerDefinition>([
-  new ReducerBinding<DrawerDefinition, ChangePageAction>(_activePageReducer),
+final pageReducer = combineReducers<DrawerDefinition>([
+  new TypedReducer<DrawerDefinition, ChangePageAction>(_activePageReducer),
 ]);
 
 DrawerDefinition _activePageReducer(

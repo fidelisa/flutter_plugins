@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:menu_swipe_helpers/drawer_definition.dart';
-import 'package:menu_swipe_helpers/drawer_store.dart';
 import 'package:menu_swipe_helpers/reducers/drawer_reducer.dart';
 import 'package:menu_swipe_helpers/reducers/page_reducer.dart';
 
 /// Create a Store with DrawerStoreMixin interface
-class DrawerState implements DrawerStore {
+class DrawerState {
   final Widget activeDrawer;
   final DrawerDefinition activePage;
 

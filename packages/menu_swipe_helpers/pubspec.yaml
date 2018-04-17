@@ -1,6 +1,6 @@
 name: menu_swipe_helpers
 description: Provide classes, interfaces and mixins that help creating applications with menu swipe.
-version: 0.2.3
+version: 0.3.0
 author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
@@ -8,8 +8,7 @@ environment:
   sdk: ">=1.8.0 <2.1.0"
 
 dependencies:
-  redux: ^2.0.2
-  flutter_redux: "^0.3.5"
+  flutter_redux: "^0.5.0"
   flutter:
     sdk: flutter
 

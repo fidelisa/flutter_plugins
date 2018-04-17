@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:menu_swipe_helpers/containers/active_page.dart';
+import 'package:menu_swipe_helpers/drawer_state.dart';
 import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
 import 'package:redux/redux.dart';
-import 'package:menu_swipe_helpers/containers/active_page.dart';
 
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider(
+    return new StoreProvider<DrawerState>(
       store: createDrawerStore(_drawerBuilder),
       child: new MaterialApp(
           title: 'Flutter Demo',
@@ -138,7 +139,7 @@ class _ThirdPage extends State<ThirdPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void updateDrawer(Widget value) {
-    Store store = new StoreProvider.of(context).store;
+    Store store = StoreProvider.of<DrawerState>(context);
     store.dispatch(new UpdateDrawerAction(value));
   }
 
