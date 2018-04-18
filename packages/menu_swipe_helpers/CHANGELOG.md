@@ -1,4 +1,8 @@
-## [0.3.0] - 22/03/2018
+## [0.3.1] - 18/04/2018
+* add params to createDrawerStore
+* add middleware to update first page on change drawer
+
+## [0.3.0] - 17/04/2018
 **BREAKING CHANGE**
 * dart 2 strong types
 
