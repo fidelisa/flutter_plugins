@@ -12,40 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.1/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.2/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth-0.5.3/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/firebase_auth/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.0.3/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/flutter_facebook_login-1.1.0/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/build" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/example/ios/Pods/.symlinks/plugins/google_sign_in-2.1.2/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/Flutter/flutter_assets/packages" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

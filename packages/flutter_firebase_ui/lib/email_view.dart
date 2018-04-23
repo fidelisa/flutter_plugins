@@ -76,7 +76,7 @@ class _EmailViewState extends State<EmailView> {
         }));
 
         if (connected) {
-          Navigator.pop(context, true);
+          Navigator.pop(context);
         }
       } else {
         String provider = await _showDialogSelectOtherProvider(
