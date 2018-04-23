@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:menu_swipe_helpers/actions/actions.dart';
 import 'package:menu_swipe_helpers/drawer_definition.dart';
-import 'package:menu_swipe_helpers/drawer_state.dart';
-import 'package:redux/redux.dart';
+import 'package:menu_swipe_helpers/drawer_provider.dart';
 
 /// Drawer helper
 ///
@@ -29,7 +26,7 @@ class DrawerHelper extends StatefulWidget {
 }
 
 class _DrawerHelperState extends State<DrawerHelper>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin<DrawerHelper> {
   AnimationController _controller;
   Animation<double> _drawerContentsOpacity;
 
@@ -104,25 +101,27 @@ class _DrawerHelperState extends State<DrawerHelper>
   }
 
   _onTapChangePage(DrawerDefinition f) {
+    NavigatorState navigator = Navigator.of(context);
+
     if (f.hideDrawer) {
-      Navigator.of(context).pop();
-      Navigator.of(context).push(
+      navigator.pop();
+      navigator.push(
           new PageRouteBuilder(pageBuilder: (BuildContext context, _, __) {
         return f.builder(context);
       }));
-    } else if (widget.changePageWithNavigator || f.hideDrawer) {
-      Navigator.of(context).popUntil(ModalRoute.withName('/'));
-      Navigator.of(context).push(new PageRouteBuilder(
-              pageBuilder: (BuildContext context, _, __) {
-            return f.builder(context);
-          }, transitionsBuilder:
-                  (_, Animation<double> animation, __, Widget child) {
-            return new FadeTransition(opacity: animation, child: child);
-          }));
+    } else if (widget.changePageWithNavigator) {
+//      Navigator.of(context).popUntil(ModalRoute.withName('/'));
+      navigator.replace(oldRoute: null, newRoute: null);
+      navigator.pushReplacement(new PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) {
+        return f.builder(context);
+      }, transitionsBuilder:
+              (_, Animation<double> animation, __, Widget child) {
+        return new FadeTransition(opacity: animation, child: child);
+      }));
     } else {
-      Navigator.of(context).pop();
-      Store store = StoreProvider.of<DrawerState>(context);
-      store.dispatch(new ChangePageAction(f));
+      navigator.pop();
+      DrawerProvider.changePage(context, f.builder(context));
     }
   }
 }

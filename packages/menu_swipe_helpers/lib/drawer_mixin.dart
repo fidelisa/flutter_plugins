@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:menu_swipe_helpers/containers/active_drawer.dart';
+import 'package:menu_swipe_helpers/drawer_provider.dart';
 
 /// Provides the scaffold of the page linked to a menu
 ///
@@ -25,7 +25,7 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      drawer: hideDrawer ? null : new ActiveDrawer(),
+      drawer: hideDrawer ? null : DrawerProvider.drawerOf(context),
       appBar: buildAppBar(),
       body: buildBody(),
       persistentFooterButtons: buildPersistentFooterButtons(),

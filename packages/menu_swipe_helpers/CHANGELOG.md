@@ -1,3 +1,7 @@
+## [0.4.0] - 23/04/2018
+**BREAKING CHANGE**
+* remove redux - rewrite a lot (see example)
+
 ## [0.3.1] - 18/04/2018
 * add params to createDrawerStore
 * add middleware to update first page on change drawer

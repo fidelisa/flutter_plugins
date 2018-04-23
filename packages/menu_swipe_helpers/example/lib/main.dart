@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:menu_swipe_helpers/containers/active_page.dart';
-import 'package:menu_swipe_helpers/drawer_state.dart';
 import 'package:menu_swipe_helpers/menu_swipe_helpers.dart';
-import 'package:redux/redux.dart';
 
 const String _kAsset0 = 'avatars/yann.jpg';
 const String _kGalleryAssetsPackage = 'flutter_plugins_assets';
@@ -14,19 +10,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider<DrawerState>(
-      store: createDrawerStore(_drawerBuilder),
-      child: new MaterialApp(
-          title: 'Flutter Demo',
-          theme: new ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: new ActivePage()),
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new DrawerProvider(
+        drawer: _drawerBuilder,
+        child: new FirstPage(
+          title: "First Page",
+        ),
+      ),
     );
   }
 }
 
 class FirstPage extends StatefulWidget {
+  final String title;
+
+  FirstPage({this.title});
+
   @override
   _FirstPage createState() => new _FirstPage();
 }
@@ -61,7 +64,7 @@ Very basic page, go to the other pages to see more
   }
 
   @override
-  String get title => "First Page";
+  String get title => widget.title;
 }
 
 class SecondPage extends StatefulWidget {
@@ -138,9 +141,12 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPage extends State<ThirdPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  void updateDrawer(Widget value) {
-    Store store = StoreProvider.of<DrawerState>(context);
-    store.dispatch(new UpdateDrawerAction(value));
+  bool _first = true;
+
+  void updateDrawer() {
+    DrawerProvider.changeDrawer(
+        context, _first ? _drawerBuilder2 : _drawerBuilder);
+    _first = !_first;
   }
 
   @override
@@ -149,7 +155,7 @@ class _ThirdPage extends State<ThirdPage> {
 
     return new Scaffold(
       key: _scaffoldKey,
-      drawer: new ActiveDrawer(),
+      drawer: DrawerProvider.drawerOf(context),
       body: new Center(
         child: new Column(
           mainAxisSize: MainAxisSize.min,
@@ -174,7 +180,7 @@ TAP to open the drawer
                   ],
                 ),
                 onPressed: () {
-                  updateDrawer(_drawerBuilder2);
+                  updateDrawer();
                 })
           ],
         ),
@@ -198,7 +204,8 @@ Widget _userAccountDrawer(BuildContext context) => new UserAccountsDrawerHeader(
 var _firstPage = new DrawerDefinition(
     title: "First page",
     iconData: Icons.home,
-    widgetBuilder: (BuildContext context) => new FirstPage());
+    widgetBuilder: (BuildContext context) =>
+        new FirstPage(title: "First Page"));
 
 var _secondPage = new DrawerDefinition(
     title: "Second page",
@@ -214,7 +221,8 @@ var _thirdPage = new DrawerDefinition(
 var _fourthPage = new DrawerDefinition(
     title: "Fourth page",
     iconData: Icons.home,
-    widgetBuilder: (BuildContext context) => new FirstPage());
+    widgetBuilder: (BuildContext context) =>
+        new FirstPage(title: "Fourth Page"));
 
 var _drawerBuilder = new DrawerHelper(
   drawerContents: [_firstPage, _secondPage, _thirdPage],
