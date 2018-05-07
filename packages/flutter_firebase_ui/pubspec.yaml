@@ -13,7 +13,7 @@ dependencies:
   firebase_auth: ^0.5.7
 
   google_sign_in: ^3.0.3
-  flutter_facebook_login: "^1.0.3"
+  flutter_facebook_login: "^1.1.1"
 
 dev_dependencies:
   test: ^0.12.0
