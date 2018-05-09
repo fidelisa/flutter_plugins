@@ -106,26 +106,26 @@ Future<Null> showErrorDialog(BuildContext context, String message,
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) => new AlertDialog(
-      title: title != null ? new Text(title) : null,
-      content: new SingleChildScrollView(
-        child: new ListBody(
-          children: <Widget>[
-            new Text(message),
+          title: title != null ? new Text(title) : null,
+          content: new SingleChildScrollView(
+            child: new ListBody(
+              children: <Widget>[
+                new Text(message),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Row(
+                children: <Widget>[
+                  new Text(FFULocalizations.of(context).cancelButtonLabel),
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ],
         ),
-      ),
-      actions: <Widget>[
-        new FlatButton(
-          child: new Row(
-            children: <Widget>[
-              new Text(FFULocalizations.of(context).cancelButtonLabel),
-            ],
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    ),
   );
 }

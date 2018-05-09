@@ -96,44 +96,44 @@ class _EmailViewState extends State<EmailView> {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) => new AlertDialog(
-        content: new SingleChildScrollView(
-            child: new ListBody(
-          children: <Widget>[
-            new Text(FFULocalizations
-                .of(context)
-                .allReadyEmailMessage(email, providerName)),
-            new SizedBox(
-              height: 16.0,
-            ),
-            new Column(
-              children: providers.map((String p) {
-                return new RaisedButton(
-                  child: new Row(
-                    children: <Widget>[
-                      new Text(_providerStringToButton(p)),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(p);
-                  },
-                );
-              }).toList(),
-            )
-          ],
-        )),
-        actions: <Widget>[
-          new FlatButton(
-            child: new Row(
+            content: new SingleChildScrollView(
+                child: new ListBody(
               children: <Widget>[
-                new Text(FFULocalizations.of(context).cancelButtonLabel),
+                new Text(FFULocalizations
+                    .of(context)
+                    .allReadyEmailMessage(email, providerName)),
+                new SizedBox(
+                  height: 16.0,
+                ),
+                new Column(
+                  children: providers.map((String p) {
+                    return new RaisedButton(
+                      child: new Row(
+                        children: <Widget>[
+                          new Text(_providerStringToButton(p)),
+                        ],
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop(p);
+                      },
+                    );
+                  }).toList(),
+                )
               ],
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            )),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Row(
+                  children: <Widget>[
+                    new Text(FFULocalizations.of(context).cancelButtonLabel),
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
