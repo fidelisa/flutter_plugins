@@ -95,7 +95,7 @@ class _EmailViewState extends State<EmailView> {
     return showDialog<Null>(
       context: context,
       barrierDismissible: false, // user must tap button!
-      child: new AlertDialog(
+      builder: (BuildContext context) => new AlertDialog(
         content: new SingleChildScrollView(
             child: new ListBody(
           children: <Widget>[
