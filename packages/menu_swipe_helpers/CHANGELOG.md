@@ -1,3 +1,6 @@
+## [0.4.1] - 23/04/2018
+* hide bottom space
+
 ## [0.4.0] - 23/04/2018
 **BREAKING CHANGE**
 * remove redux - rewrite a lot (see example)
