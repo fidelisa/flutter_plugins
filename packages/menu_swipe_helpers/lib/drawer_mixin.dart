@@ -69,7 +69,7 @@ abstract class DrawerStateMixin<T extends StatefulWidget> extends State<T> {
   /// Build persistent footer buttons adding to the scaffold.
   ///
   /// Empty by default
-  List<Widget> buildPersistentFooterButtons() => [];
+  List<Widget> buildPersistentFooterButtons() => null;
 
   /// Build floating button adding to the scaffold.
   ///
