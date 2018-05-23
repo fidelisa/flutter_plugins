@@ -182,12 +182,82 @@ Sign in with $providerName to continue.''';
   String get signInEmail => r'Sign in with email';
 }
 
+// ignore: camel_case_types
+class _Bundle_de extends TranslationBundle {
+  const _Bundle_de() : super(null);
+
+  @override
+  String get welcome => r'Willkommen';
+  @override
+  String get emailLabel => r'Email';
+  @override
+  String get passwordLabel => r'Passwort';
+
+  @override
+  String get nextButtonLabel => r'WEITER';
+  @override
+  String get cancelButtonLabel => r'ABBRUCH';
+  @override
+  String get signInLabel => r'ANMELDEN';
+  @override
+  String get signInTitle => r'Anmelden';
+
+  @override
+  String get saveLabel => r'SPEICHERN';
+
+  @override
+  String get troubleSigningInLabel => 'Probleme beim Anmelden?';
+
+  @override
+  String get passwordInvalidMessage =>
+      'Das Passwort ist ungültig oder der Bentutzer hat kein Passwort.';
+
+  @override
+  String get recoverPasswordTitle => r'Passwort wiederherstellen';
+
+  @override
+  String get recoverHelpLabel =>
+      r'Erhalte Anweisungen zum Wiederherstellen des Passworts ' +
+      'an diese Email';
+
+  @override
+  String get sendButtonLabel => r'SENDEN';
+
+  @override
+  String get nameLabel => r'Vor- & Nachname';
+
+  @override
+  allReadyEmailMessage(String email, String providerName) {
+    return '''$email wurde bereits genutzt.
+Mit $providerName anmelden um fortzufarhen.''';
+  }
+
+  @override
+  recoverDialog(String email) {
+    return 'Befolge die Anweisungen, welche an $email gesendet wurden um das Passswort wiederherzustellen';
+  }
+
+  String get passwordLengthMessage =>
+      r'Das Passwort muss 6 oder mehr Zeichen haben';
+
+  @override
+  String get signInFacebook => r'Mit Facebook anmelden';
+
+  @override
+  String get signInGoogle => r'Mit Google anmelden';
+
+  @override
+  String get signInEmail => r'Mit Email anmelden';
+}
+
 TranslationBundle translationBundleForLocale(Locale locale) {
   switch (locale.languageCode) {
     case 'fr':
       return const _Bundle_fr();
     case 'en':
       return const _Bundle_en();
+    case 'de':
+      return const _Bundle_de()
   }
   return const TranslationBundle(null);
 }
