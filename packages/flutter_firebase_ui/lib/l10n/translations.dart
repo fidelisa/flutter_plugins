@@ -153,7 +153,7 @@ class _Bundle_en extends TranslationBundle {
       'that explain how to reset your password';
 
   @override
-  String get sendButtonLabel => r'ENVOYER';
+  String get sendButtonLabel => r'SEND';
 
   @override
   String get nameLabel => r'First & last name';
