@@ -257,7 +257,7 @@ TranslationBundle translationBundleForLocale(Locale locale) {
     case 'en':
       return const _Bundle_en();
     case 'de':
-      return const _Bundle_de()
+      return const _Bundle_de();
   }
   return const TranslationBundle(null);
 }
