@@ -62,7 +62,7 @@ class _EmailViewState extends State<EmailView> {
           await auth.fetchProvidersForEmail(email: _controllerEmail.text);
       print(providers);
 
-      if (providers == null) {
+      if (providers == null ?? providers.isEmpty) {
         Navigator
             .of(context)
             .push(new MaterialPageRoute<Null>(builder: (BuildContext context) {
