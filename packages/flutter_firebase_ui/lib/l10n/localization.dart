@@ -47,6 +47,8 @@ class FFULocalizations {
   String get signInGoogle => _translationBundle.signInGoogle;
   String get signInEmail => _translationBundle.signInEmail;
 
+  String get errorOccurred => _translationBundle.errorOccurred;
+
   static Future<FFULocalizations> load(Locale locale) {
     return new SynchronousFuture<FFULocalizations>(
         new FFULocalizations(locale));

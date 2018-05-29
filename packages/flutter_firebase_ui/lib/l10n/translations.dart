@@ -38,6 +38,8 @@ class TranslationBundle {
   String get signInGoogle => parent?.signInGoogle;
   String get signInEmail => parent?.signInEmail;
 
+  String get errorOccurred => parent?.errorOccurred;
+
   allReadyEmailMessage(String email, String providerName) =>
       parent?.allReadyEmailMessage(email, providerName);
 
@@ -88,6 +90,9 @@ class _Bundle_fr extends TranslationBundle {
 
   @override
   String get nameLabel => r'Nom et prénom';
+
+  @override    
+  String get errorOccurred => r'Une erreur est survenue';
 
   @override
   allReadyEmailMessage(String email, String providerName) {
@@ -158,6 +163,9 @@ class _Bundle_en extends TranslationBundle {
   @override
   String get nameLabel => r'First & last name';
 
+  @override    
+  String get errorOccurred => r'An error occurred';
+
   @override
   allReadyEmailMessage(String email, String providerName) {
     return '''You have already used $email.
@@ -225,6 +233,9 @@ class _Bundle_de extends TranslationBundle {
 
   @override
   String get nameLabel => r'Vor- & Nachname';
+
+  @override    
+  String get errorOccurred => r'Ein Fehler ist aufgetreten';
 
   @override
   allReadyEmailMessage(String email, String providerName) {

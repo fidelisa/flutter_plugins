@@ -6,9 +6,12 @@
 Flutter_firebase_ui is a library that help you to quickly implement firebase authentication.
 It provider UI for the common identity providers, Facebook, Google, Twitter and email. 
 
+Note: this plugin use firebase_auth you must configure it as describe [here](https://pub.dartlang.org/packages/firebase_auth).
+
+
 ![screenshot](https://github.com/fidelisa/flutter_plugins/blob/master/packages/flutter_firebase_ui/swipe.gif?raw=true)
 
-Show [menu_swipe](https://github.com/fidelisa/flutter_plugins/tree/master/packages/flutter_firebase_ui/example) example.
+Show [firebase ui](https://github.com/fidelisa/flutter_plugins/tree/master/packages/flutter_firebase_ui/example) example.
 
 ## Getting Started
 
