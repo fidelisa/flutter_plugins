@@ -62,12 +62,16 @@ class _EmailViewState extends State<EmailView> {
           await auth.fetchProvidersForEmail(email: _controllerEmail.text);
       print(providers);
 
-      if (providers == null ?? providers.isEmpty) {
-        Navigator
+      if (providers.isEmpty) {
+        bool connected = await Navigator
             .of(context)
-            .push(new MaterialPageRoute<Null>(builder: (BuildContext context) {
+            .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
           return new SignUpView(_controllerEmail.text);
         }));
+
+        if (connected) {
+          Navigator.pop(context);
+        }
       } else if (providers.contains('password')) {
         bool connected = await Navigator
             .of(context)

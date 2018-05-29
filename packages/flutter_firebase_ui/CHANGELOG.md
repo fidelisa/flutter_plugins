@@ -1,3 +1,9 @@
+## [0.0.5] - 29/05/2018
+* show error occured on unknown errors
+* display email if no displayName (example)
+* secure providers test, firebase_auth behavior change
+* pop sign up !
+
 ## [0.0.4] - 09/05/2018
 * Upgrade to Google Services 3.2.1 and Google Sign In 3.0.3
 

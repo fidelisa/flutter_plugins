@@ -100,7 +100,8 @@ class _SignUpViewState extends State<SignUpView> {
       try {
         var userUpdateInfo = new UserUpdateInfo();
         userUpdateInfo.displayName = _controllerDisplayName.text;
-        _auth.updateProfile(userUpdateInfo);
+        await _auth.updateProfile(userUpdateInfo);
+        Navigator.pop(context, true);
       } catch (e) {
         showErrorDialog(context, e.details);
       }
