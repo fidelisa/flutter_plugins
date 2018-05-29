@@ -91,7 +91,7 @@ class _Bundle_fr extends TranslationBundle {
   @override
   String get nameLabel => r'Nom et prénom';
 
-  @override    
+  @override
   String get errorOccurred => r'Une erreur est survenue';
 
   @override
@@ -163,7 +163,7 @@ class _Bundle_en extends TranslationBundle {
   @override
   String get nameLabel => r'First & last name';
 
-  @override    
+  @override
   String get errorOccurred => r'An error occurred';
 
   @override
@@ -234,7 +234,7 @@ class _Bundle_de extends TranslationBundle {
   @override
   String get nameLabel => r'Vor- & Nachname';
 
-  @override    
+  @override
   String get errorOccurred => r'Ein Fehler ist aufgetreten';
 
   @override
