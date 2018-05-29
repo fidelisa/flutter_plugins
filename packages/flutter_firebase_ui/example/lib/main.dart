@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
               new SizedBox(
                 height: 8.0,
               ),
-              new Text(user.displayName),
+              new Text(user.displayName ?? user.email),
               new SizedBox(
                 height: 32.0,
               ),
