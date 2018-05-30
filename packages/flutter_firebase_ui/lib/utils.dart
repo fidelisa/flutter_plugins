@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 
 import 'package:flutter_firebase_ui/l10n/localization.dart';
 
-
 enum ProvidersTypes { email, google, facebook, twitter, phone }
 
 ProvidersTypes stringToProvidersType(String value) {
