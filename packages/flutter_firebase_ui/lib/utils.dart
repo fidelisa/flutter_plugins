@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'l10n/localization.dart';
+import 'package:flutter_firebase_ui/l10n/localization.dart';
+
 
 enum ProvidersTypes { email, google, facebook, twitter, phone }
 
