@@ -110,7 +110,7 @@ Future<Null> showErrorDialog(BuildContext context, String message,
           content: new SingleChildScrollView(
             child: new ListBody(
               children: <Widget>[
-                new Text(message),
+                new Text(message ?? FFULocalizations.of(context).errorOccurred),
               ],
             ),
           ),

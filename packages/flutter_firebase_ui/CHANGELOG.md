@@ -1,3 +1,6 @@
+## [0.0.6] - 30/05/2018
+* improve show dialog error 
+
 ## [0.0.5] - 29/05/2018
 * show error occured on unknown errors
 * display email if no displayName (example)

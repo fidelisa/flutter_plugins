@@ -52,9 +52,7 @@ class _LoginViewState extends State<LoginView> {
 
           print(user);
         } catch (e) {
-          String error =
-              e.details ?? FFULocalizations.of(context).errorOccurred;
-          showErrorDialog(context, error);
+          showErrorDialog(context, e.details);
         }
       }
     }
