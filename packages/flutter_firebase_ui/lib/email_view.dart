@@ -96,7 +96,7 @@ class _EmailViewState extends State<EmailView> {
 
   _showDialogSelectOtherProvider(String email, List<String> providers) {
     var providerName = _providersToString(providers);
-    return showDialog<Null>(
+    return showDialog<String>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) => new AlertDialog(
@@ -133,7 +133,7 @@ class _EmailViewState extends State<EmailView> {
                   ],
                 ),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pop('');
                 },
               ),
             ],
