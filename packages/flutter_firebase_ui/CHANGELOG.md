@@ -1,3 +1,6 @@
+## [0.0.7] - 04/07/2018
+* fixe sign in with mail 
+
 ## [0.0.6] - 30/05/2018
 * improve show dialog error 
 
