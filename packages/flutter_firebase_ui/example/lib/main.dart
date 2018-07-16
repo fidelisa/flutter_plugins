@@ -53,15 +53,15 @@ class _MyHomePageState extends State<MyHomePage> {
       return new SignInScreen(
         title: "Bienvenue",
         header: new Padding(
-          padding: const EdgeInsets.symmetric(vertical: 32.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: new Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(16.0),
             child: new Text("Demo"),
           ),
         ),
         providers: [
-          ProvidersTypes.facebook,
           ProvidersTypes.google,
+          ProvidersTypes.facebook,
           ProvidersTypes.email
         ],
       );

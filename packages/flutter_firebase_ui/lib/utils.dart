@@ -54,14 +54,13 @@ class ButtonDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     VoidCallback _onSelected = onSelected ?? () => {};
     return new Padding(
-      padding: const EdgeInsets.only(top: 16.0),
+      padding: const EdgeInsets.fromLTRB(32.0, 16.0, 32.0, 16.0),
       child: new RaisedButton(
           color: color,
           child: new Row(
             children: <Widget>[
               new Container(
-                  padding: const EdgeInsets.only(
-                      top: 8.0, bottom: 8.0, left: 16.0, right: 32.0),
+                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 32.0, 16.0),
                   child: new Image.asset('assets/$logo',
                       package: 'flutter_firebase_ui')),
               new Expanded(
