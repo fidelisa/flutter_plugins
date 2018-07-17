@@ -1,3 +1,6 @@
+## [0.0.8] - 17/07/2018
+* improve UI
+
 ## [0.0.7] - 04/07/2018
 * fixe sign in with mail 
 
