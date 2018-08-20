@@ -63,7 +63,8 @@ class _EmailViewState extends State<EmailView> {
       print(providers);
 
       if (providers.isEmpty) {
-        bool connected = await Navigator.of(context)
+        bool connected = await Navigator
+            .of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
           return new SignUpView(_controllerEmail.text);
         }));
@@ -72,7 +73,8 @@ class _EmailViewState extends State<EmailView> {
           Navigator.pop(context);
         }
       } else if (providers.contains('password')) {
-        bool connected = await Navigator.of(context)
+        bool connected = await Navigator
+            .of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
           return new PasswordView(_controllerEmail.text);
         }));
@@ -101,7 +103,8 @@ class _EmailViewState extends State<EmailView> {
             content: new SingleChildScrollView(
                 child: new ListBody(
               children: <Widget>[
-                new Text(FFULocalizations.of(context)
+                new Text(FFULocalizations
+                    .of(context)
                     .allReadyEmailMessage(email, providerName)),
                 new SizedBox(
                   height: 16.0,

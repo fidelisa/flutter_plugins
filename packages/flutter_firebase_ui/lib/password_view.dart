@@ -87,7 +87,8 @@ class _PasswordViewState extends State<PasswordView> {
   }
 
   _handleLostPassword() {
-    Navigator.of(context)
+    Navigator
+        .of(context)
         .push(new MaterialPageRoute<Null>(builder: (BuildContext context) {
       return new TroubleSignIn(_controllerEmail.text);
     }));
