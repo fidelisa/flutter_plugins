@@ -6,7 +6,6 @@ import 'package:flutter_firebase_ui/flutter_firebase_ui.dart';
 import 'package:flutter_firebase_ui/l10n/localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {

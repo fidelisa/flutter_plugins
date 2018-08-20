@@ -25,8 +25,7 @@ class _LoginViewState extends State<LoginView> {
   Map<ProvidersTypes, ButtonDescription> _buttons;
 
   _handleEmailSignIn() async {
-    String value = await Navigator
-        .of(context)
+    String value = await Navigator.of(context)
         .push(new MaterialPageRoute<String>(builder: (BuildContext context) {
       return new EmailView();
     }));
