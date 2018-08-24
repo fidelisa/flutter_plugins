@@ -9,10 +9,12 @@ import 'utils.dart';
 
 class LoginView extends StatefulWidget {
   final List<ProvidersTypes> providers;
+  final bool passwordCheck;
 
   LoginView({
     Key key,
     @required this.providers,
+    this.passwordCheck,
   }) : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
     String value = await Navigator
         .of(context)
         .push(new MaterialPageRoute<String>(builder: (BuildContext context) {
-      return new EmailView();
+      return new EmailView(widget.passwordCheck);
     }));
 
     if (value != null) {

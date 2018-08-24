@@ -21,6 +21,8 @@ class FFULocalizations {
   String get cancelButtonLabel => _translationBundle.cancelButtonLabel;
 
   String get passwordLabel => _translationBundle.passwordLabel;
+  String get passwordCheckLabel => _translationBundle.passwordCheckLabel;
+  String get passwordCheckError => _translationBundle.passwordCheckError;
 
   String get troubleSigningInLabel => _translationBundle.troubleSigningInLabel;
 

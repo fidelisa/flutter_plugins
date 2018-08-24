@@ -12,6 +12,7 @@ class SignInScreen extends StatefulWidget {
     this.title,
     this.header,
     this.footer,
+    this.signUpPasswordCheck,
     this.providers,
     this.color = Colors.white,
   }) : super(key: key);
@@ -21,6 +22,7 @@ class SignInScreen extends StatefulWidget {
   final Widget footer;
   final List<ProvidersTypes> providers;
   final Color color;
+  final bool signUpPasswordCheck;
 
   @override
   _SignInScreenState createState() => new _SignInScreenState();
@@ -29,6 +31,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   Widget get _header => widget.header ?? new Container();
   Widget get _footer => widget.footer ?? new Container();
+
+  bool get _passwordCheck => widget.signUpPasswordCheck ?? false;
 
   List<ProvidersTypes> get _providers =>
       widget.providers ?? [ProvidersTypes.email];
@@ -48,7 +52,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   _header,
-                  new Expanded(child: new LoginView(providers: _providers)),
+                  new Expanded(
+                      child: new LoginView(
+                          providers: _providers,
+                          passwordCheck: _passwordCheck)),
                   _footer
                 ],
               ));
