@@ -1,3 +1,6 @@
+## [0.0.9] - 07/09/2018
+* add mail verification option
+
 ## [0.0.8] - 17/07/2018
 * improve UI
 
