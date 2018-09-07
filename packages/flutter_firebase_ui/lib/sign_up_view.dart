@@ -77,8 +77,7 @@ class _SignUpViewState extends State<SignUpView> {
                         obscureText: true,
                         autocorrect: false,
                         decoration: new InputDecoration(
-                            labelText: FFULocalizations
-                                .of(context)
+                            labelText: FFULocalizations.of(context)
                                 .passwordCheckLabel),
                       ),
               ],
