@@ -14,6 +14,10 @@ class TranslationBundle {
 
   String get passwordLabel => parent?.passwordLabel;
 
+  String get passwordCheckLabel => parent?.passwordCheckLabel;
+
+  String get passwordCheckError => parent?.passwordCheckError;
+
   String get troubleSigningInLabel => parent?.troubleSigningInLabel;
 
   String get signInLabel => parent?.signInLabel;
@@ -56,6 +60,12 @@ class _Bundle_fr extends TranslationBundle {
   String get emailLabel => r'Adresse mail';
   @override
   String get passwordLabel => r'Mot de passe';
+
+  @override
+  String get passwordCheckLabel => r'Confirmez le mot de passe';
+
+  @override
+  String get passwordCheckError => r'Les deux mots de passe sont différents.';
 
   @override
   String get nextButtonLabel => r'SUIVANT';
@@ -131,6 +141,12 @@ class _Bundle_en extends TranslationBundle {
   String get passwordLabel => r'Password';
 
   @override
+  String get passwordCheckLabel => r'Confirm the password';
+
+  @override
+  String get passwordCheckError => r'The two passwords are different';
+
+  @override
   String get nextButtonLabel => r'NEXT';
   @override
   String get cancelButtonLabel => r'CANCEL';
@@ -200,6 +216,12 @@ class _Bundle_de extends TranslationBundle {
   String get emailLabel => r'Email';
   @override
   String get passwordLabel => r'Passwort';
+
+  @override
+  String get passwordCheckLabel => r'Bestätigen Sie das Passwort';
+
+  @override
+  String get passwordCheckError => r'Die zwei Passwörter sind unterschiedlich';
 
   @override
   String get nextButtonLabel => r'WEITER';

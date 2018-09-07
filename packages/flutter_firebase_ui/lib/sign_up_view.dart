@@ -7,8 +7,9 @@ import 'utils.dart';
 
 class SignUpView extends StatefulWidget {
   final String email;
+  final bool passwordCheck;
 
-  SignUpView(this.email, {Key key}) : super(key: key);
+  SignUpView(this.email, this.passwordCheck, {Key key}) : super(key: key);
 
   @override
   _SignUpViewState createState() => new _SignUpViewState();
@@ -18,6 +19,7 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController _controllerEmail;
   TextEditingController _controllerDisplayName;
   TextEditingController _controllerPassword;
+  TextEditingController _controllerCheckPassword;
 
   bool _valid = false;
 
@@ -27,6 +29,7 @@ class _SignUpViewState extends State<SignUpView> {
     _controllerEmail = new TextEditingController(text: widget.email);
     _controllerDisplayName = new TextEditingController();
     _controllerPassword = new TextEditingController();
+    _controllerCheckPassword = new TextEditingController();
   }
 
   @override
@@ -41,7 +44,7 @@ class _SignUpViewState extends State<SignUpView> {
         builder: (BuildContext context) {
           return new Padding(
             padding: const EdgeInsets.all(16.0),
-            child: new Column(
+            child: new ListView(
               children: <Widget>[
                 new TextField(
                   controller: _controllerEmail,
@@ -67,6 +70,17 @@ class _SignUpViewState extends State<SignUpView> {
                   decoration: new InputDecoration(
                       labelText: FFULocalizations.of(context).passwordLabel),
                 ),
+                !widget.passwordCheck
+                    ? new Container()
+                    : new TextField(
+                        controller: _controllerCheckPassword,
+                        obscureText: true,
+                        autocorrect: false,
+                        decoration: new InputDecoration(
+                            labelText: FFULocalizations
+                                .of(context)
+                                .passwordCheckLabel),
+                      ),
               ],
             ),
           );
@@ -91,6 +105,12 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   _connexion(BuildContext context) async {
+    if (widget.passwordCheck &&
+        _controllerPassword.text != _controllerCheckPassword.text) {
+      showErrorDialog(context, FFULocalizations.of(context).passwordCheckError);
+      return;
+    }
+
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
       await _auth.createUserWithEmailAndPassword(
