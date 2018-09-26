@@ -87,10 +87,10 @@ class _LoginViewState extends State<LoginView> {
     };
 
     return new Container(
-        child: new Column(
+        child: new ListView(
             children: widget.providers.map((p) {
       return new Container(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 0.0),
           child: _buttons[p] ?? new Container());
     }).toList()));
   }
