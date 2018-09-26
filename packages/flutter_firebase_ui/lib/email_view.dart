@@ -66,7 +66,7 @@ class _EmailViewState extends State<EmailView> {
           await auth.fetchProvidersForEmail(email: _controllerEmail.text);
       print(providers);
 
-      if (providers.isEmpty) {
+      if (providers == null || providers.isEmpty) {
         bool connected = await Navigator.of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
           return new SignUpView(_controllerEmail.text, widget.passwordCheck);
