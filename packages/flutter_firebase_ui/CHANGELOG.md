@@ -1,4 +1,7 @@
-## [0.0.10] - 07/09/2018
+## [0.0.10] - 27/09/2018
+* add function signOutProviders
+
+## [0.0.10] - 26/09/2018
 * fixed empty null on Providers
 * allow for usage with landscape orientation
 
