@@ -1,3 +1,7 @@
+## [0.0.10] - 07/09/2018
+* fixed empty null on Providers
+* allow for usage with landscape orientation
+
 ## [0.0.9] - 07/09/2018
 * add mail verification option
 
