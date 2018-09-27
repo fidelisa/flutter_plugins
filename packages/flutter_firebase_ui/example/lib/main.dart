@@ -131,6 +131,6 @@ class HomeScreen extends StatelessWidget {
           )));
 
   void _logout() {
-    signOutProviders();    
+    signOutProviders();
   }
 }

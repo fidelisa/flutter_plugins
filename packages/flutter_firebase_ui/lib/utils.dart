@@ -13,8 +13,6 @@ enum ProvidersTypes { email, google, facebook, twitter, phone }
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 final FacebookLogin facebookLogin = new FacebookLogin();
 
-
-
 ProvidersTypes stringToProvidersType(String value) {
   if (value.toLowerCase().contains('facebook')) return ProvidersTypes.facebook;
   if (value.toLowerCase().contains('google')) return ProvidersTypes.google;
@@ -143,19 +141,18 @@ Future<void> signOutProviders() async {
     await signOut(currentUser.providerData);
   }
 
-  return await FirebaseAuth.instance.signOut();  
+  return await FirebaseAuth.instance.signOut();
 }
 
- Future<dynamic> signOut(Iterable providers) async {
+Future<dynamic> signOut(Iterable providers) async {
   return Future.forEach(providers, (p) async {
-     switch (p.providerId) {
-        case 'facebook.com':
-          await facebookLogin.logOut(); 
-          break;
-        case 'google.com':
-          await googleSignIn.signOut(); 
-          break;
-     }  
+    switch (p.providerId) {
+      case 'facebook.com':
+        await facebookLogin.logOut();
+        break;
+      case 'google.com':
+        await googleSignIn.signOut();
+        break;
+    }
   });
-  
 }
