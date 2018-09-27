@@ -38,9 +38,8 @@ class _LoginViewState extends State<LoginView> {
   }
 
   _handleGoogleSignIn() async {
-    GoogleSignIn _googleSignIn = new GoogleSignIn();
-
-    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
     if (googleUser != null) {
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       if (googleAuth.accessToken != null) {
@@ -59,7 +58,6 @@ class _LoginViewState extends State<LoginView> {
   }
 
   _handleFacebookSignin() async {
-    var facebookLogin = new FacebookLogin();
     FacebookLoginResult result =
         await facebookLogin.logInWithReadPermissions(['email']);
     if (result.accessToken != null) {

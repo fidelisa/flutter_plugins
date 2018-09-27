@@ -131,6 +131,6 @@ class HomeScreen extends StatelessWidget {
           )));
 
   void _logout() {
-    FirebaseAuth.instance.signOut();
+    signOutProviders();    
   }
 }
