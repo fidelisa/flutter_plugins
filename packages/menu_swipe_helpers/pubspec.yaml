@@ -5,13 +5,12 @@ author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
 environment:
-  sdk: ">=1.8.0 <2.1.0"
+  sdk: ">=1.19.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  test: '>=0.12.0 <=0.13.0'
   flutter_test:
     sdk: flutter
