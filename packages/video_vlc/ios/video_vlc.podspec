@@ -19,6 +19,7 @@ A new flutter plugin project.
   s.dependency 'Flutter'
 
   s.dependency 'MobileVLCKit', '~> 3.1'
+  s.static_framework = true
   
   s.ios.deployment_target = '8.0'
 end
