@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - MobileVLCKit (3.1.3)
+  - video_vlc (0.0.1):
+    - Flutter
+    - MobileVLCKit (~> 3.1)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - video_vlc (from `.symlinks/plugins/video_vlc/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MobileVLCKit
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  video_vlc:
+    :path: ".symlinks/plugins/video_vlc/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  MobileVLCKit: 1965a1337063d141abccb67b25cba49336214130
+  video_vlc: d02e22598c7330729cc2d951075e89c3aa47a30a
+
+PODFILE CHECKSUM: 1e5af4103afd21ca5ead147d7b81d06f494f51a2
+
+COCOAPODS: 1.5.3

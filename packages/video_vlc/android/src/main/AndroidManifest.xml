@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.fidelisa.videovlc">
+
+  <application>
+    <activity android:name=".VideoActivity" android:theme="@style/VideoTheme">
+    </activity>
+  </application>
+</manifest>
