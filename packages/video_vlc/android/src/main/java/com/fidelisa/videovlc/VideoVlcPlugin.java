@@ -1,21 +1,18 @@
 package com.fidelisa.videovlc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-
 /** VideoVlcPlugin */
 public class VideoVlcPlugin implements MethodCallHandler {
-    private static Context context;
+  private static Context context;
 
-    /** Plugin registration. */
+  /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "video_vlc");
     channel.setMethodCallHandler(new VideoVlcPlugin());
