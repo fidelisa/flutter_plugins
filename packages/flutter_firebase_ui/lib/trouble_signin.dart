@@ -78,6 +78,7 @@ class _TroubleSignInState extends State<TroubleSignIn> {
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
       await _auth.sendPasswordResetEmail(email: _controllerEmail.text);
+      Navigator.of(context).pop();
     } catch (exception) {
       showErrorDialog(context, exception);
     }

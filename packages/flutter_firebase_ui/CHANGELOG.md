@@ -1,4 +1,7 @@
-## [0.0.10] - 27/09/2018
+## [0.0.12] - 27/09/2018
+* after trouble sign in pop
+
+## [0.0.11] - 27/09/2018
 * add function signOutProviders
 
 ## [0.0.10] - 26/09/2018

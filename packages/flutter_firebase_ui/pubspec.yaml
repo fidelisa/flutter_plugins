@@ -1,6 +1,6 @@
 name: flutter_firebase_ui
 description: Firebase auth UI, dart package try to mimic the firebaseUI.
-version: 0.0.11
+version: 0.0.12
 author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
