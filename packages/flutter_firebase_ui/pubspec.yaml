@@ -5,15 +5,15 @@ author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
 environment:
-  sdk: ">=1.19.0 <2.1.0"
+  sdk: ">=2.0.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: ^0.5.7
+  firebase_auth: ^0.6.2+1
 
-  google_sign_in: "^3.0.3+1"
-  flutter_facebook_login: "^1.1.1"
+  google_sign_in: ^3.2.1
+  flutter_facebook_login: ^1.1.1
 
 dev_dependencies:
   flutter_test:
