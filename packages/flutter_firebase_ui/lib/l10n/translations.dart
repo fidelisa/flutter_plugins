@@ -283,6 +283,83 @@ Mit $providerName anmelden um fortzufarhen.''';
   String get signInEmail => r'Mit Email anmelden';
 }
 
+// ignore: camel_case_types
+class _Bundle_pt extends TranslationBundle {
+  const _Bundle_pt() : super(null);
+
+  @override
+  String get welcome => r'Bem-Vindo';
+  @override
+  String get emailLabel => r'E-mail';
+  @override
+  String get passwordLabel => r'Senha';
+
+  @override
+  String get passwordCheckLabel => r'Confirme a senha';
+
+  @override
+  String get passwordCheckError => r'As senhas são diferentes';
+
+  @override
+  String get nextButtonLabel => r'PRÓXIMA';
+  @override
+  String get cancelButtonLabel => r'CANCELAR';
+  @override
+  String get signInLabel => r'FAZER LOGIN';
+  @override
+  String get signInTitle => r'Fazer login';
+
+  @override
+  String get saveLabel => r'SALVAR';
+
+  @override
+  String get troubleSigningInLabel => 'Problemas ao fazer login ?';
+
+  @override
+  String get passwordInvalidMessage =>
+      'A senha é inválida ou o usuário não possui uma senha.';
+
+  @override
+  String get recoverPasswordTitle => r'Recuperar a senha';
+
+  @override
+  String get recoverHelpLabel =>
+      r'Siga as instruções enviadas para esse e-mail ' +
+          'para descobrir como redefinir sua senha';
+
+  @override
+  String get sendButtonLabel => r'ENVIAR';
+
+  @override
+  String get nameLabel => r'Nome e sobrenome';
+
+  @override
+  String get errorOccurred => r'Ocorreu um erro';
+
+  @override
+  allReadyEmailMessage(String email, String providerName) {
+    return '''Você já usou o e-mail $email.
+Faça login com o $providerName para continuar.''';
+  }
+
+  @override
+  recoverDialog(String email) {
+    return 'Siga as instruções enviadas para $email para recuperar sua senha';
+  }
+
+  String get passwordLengthMessage =>
+      r'A senha deve ter pelo menos 6 caracteres';
+
+  @override
+  String get signInFacebook => r'Login com o Facebook';
+
+  @override
+  String get signInGoogle => r'Login com o Google';
+
+  @override
+  String get signInEmail => r'Login com o e-mail';
+}
+
 TranslationBundle translationBundleForLocale(Locale locale) {
   switch (locale.languageCode) {
     case 'fr':
@@ -291,6 +368,8 @@ TranslationBundle translationBundleForLocale(Locale locale) {
       return const _Bundle_en();
     case 'de':
       return const _Bundle_de();
+    case 'pt':
+      return const _Bundle_pt();
   }
   return const TranslationBundle(null);
 }
