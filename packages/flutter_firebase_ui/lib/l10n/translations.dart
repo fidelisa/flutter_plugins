@@ -325,7 +325,7 @@ class _Bundle_pt extends TranslationBundle {
   @override
   String get recoverHelpLabel =>
       r'Siga as instruções enviadas para esse e-mail ' +
-          'para descobrir como redefinir sua senha';
+      'para descobrir como redefinir sua senha';
 
   @override
   String get sendButtonLabel => r'ENVIAR';
