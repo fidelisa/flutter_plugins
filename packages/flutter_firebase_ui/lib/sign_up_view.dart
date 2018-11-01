@@ -21,7 +21,15 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController _controllerPassword;
   TextEditingController _controllerCheckPassword;
 
+  final FocusNode _focusPassword = FocusNode();
+
   bool _valid = false;
+
+  @override
+  dispose() {
+    _focusPassword.dispose();
+    super.dispose();
+  }
 
   @override
   initState() {
@@ -50,15 +58,18 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: _controllerEmail,
                   keyboardType: TextInputType.emailAddress,
                   autocorrect: false,
+                  onSubmitted: _submit,
                   decoration: new InputDecoration(
                       labelText: FFULocalizations.of(context).emailLabel),
                 ),
                 const SizedBox(height: 8.0),
                 new TextField(
                   controller: _controllerDisplayName,
+                  autofocus: true,
                   keyboardType: TextInputType.text,
                   autocorrect: false,
                   onChanged: _checkValid,
+                  onSubmitted: _submitDisplayName,
                   decoration: new InputDecoration(
                       labelText: FFULocalizations.of(context).nameLabel),
                 ),
@@ -67,6 +78,8 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: _controllerPassword,
                   obscureText: true,
                   autocorrect: false,
+                  onSubmitted: _submit,
+                  focusNode: _focusPassword,
                   decoration: new InputDecoration(
                       labelText: FFULocalizations.of(context).passwordLabel),
                 ),
@@ -101,6 +114,14 @@ class _SignUpViewState extends State<SignUpView> {
         )
       ],
     );
+  }
+
+  _submitDisplayName( String submitted ) {
+    FocusScope.of( context ).requestFocus( _focusPassword );
+  }
+
+  _submit( String submitted ) {
+    _connexion( context );
   }
 
   _connexion(BuildContext context) async {

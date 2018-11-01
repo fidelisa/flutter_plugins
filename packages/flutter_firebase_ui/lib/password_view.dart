@@ -49,6 +49,8 @@ class _PasswordViewState extends State<PasswordView> {
                 //const SizedBox(height: 5.0),
                 new TextField(
                   controller: _controllerPassword,
+                  autofocus: true,
+                  onSubmitted: _submit,
                   obscureText: true,
                   autocorrect: false,
                   decoration: new InputDecoration(
@@ -84,6 +86,10 @@ class _PasswordViewState extends State<PasswordView> {
         )
       ],
     );
+  }
+
+  _submit( String submitted ) {
+    _connexion( context );
   }
 
   _handleLostPassword() {
