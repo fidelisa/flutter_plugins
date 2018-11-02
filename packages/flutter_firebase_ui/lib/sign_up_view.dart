@@ -116,12 +116,12 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
-  _submitDisplayName( String submitted ) {
-    FocusScope.of( context ).requestFocus( _focusPassword );
+  _submitDisplayName(String submitted) {
+    FocusScope.of(context).requestFocus(_focusPassword);
   }
 
-  _submit( String submitted ) {
-    _connexion( context );
+  _submit(String submitted) {
+    _connexion(context);
   }
 
   _connexion(BuildContext context) async {

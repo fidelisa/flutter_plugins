@@ -88,8 +88,8 @@ class _PasswordViewState extends State<PasswordView> {
     );
   }
 
-  _submit( String submitted ) {
-    _connexion( context );
+  _submit(String submitted) {
+    _connexion(context);
   }
 
   _handleLostPassword() {

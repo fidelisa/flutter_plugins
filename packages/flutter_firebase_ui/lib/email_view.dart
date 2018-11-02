@@ -61,8 +61,8 @@ class _EmailViewState extends State<EmailView> {
         ],
       );
 
-  _submit( String submitted ) {
-    _connexion( context );
+  _submit(String submitted) {
+    _connexion(context);
   }
 
   _connexion(BuildContext context) async {
