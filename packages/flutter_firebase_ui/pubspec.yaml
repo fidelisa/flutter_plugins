@@ -10,13 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_twitter_login:
+    git: git://github.com/eudangeld/flutter_twitter_login.git
+
   firebase_auth: ^0.6.2+1
 
   google_sign_in: ^3.2.1
   flutter_facebook_login: ^1.1.1
-  flutter_twitter_login:
-    git: git://github.com/eudangeld/flutter_twitter_login.git
-    
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -39,4 +41,3 @@ flutter:
    - assets/twitter-logo.png
    - assets/2.0x/twitter-logo.png
    - assets/3.0x/twitter-logo.png
-
