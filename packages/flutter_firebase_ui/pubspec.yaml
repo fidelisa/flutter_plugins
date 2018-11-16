@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
   flutter_twitter_login:
-    git: git://github.com/eudangeld/flutter_twitter_login.git
+    git: git://github.com/diegoveloper/flutter_twitter_login.git
 
   firebase_auth: ^0.6.2+1
 
