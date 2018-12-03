@@ -129,7 +129,7 @@ Connectez-vous avec $providerName pour continuer.''';
   @override
   String get signInEmail => r'Connexion avec email';
 
-    @override
+  @override
   String get signInTwitter => r'Connexion avec Twitter';
 }
 
@@ -209,7 +209,7 @@ Sign in with $providerName to continue.''';
   @override
   String get signInEmail => r'Sign in with email';
 
-    @override
+  @override
   String get signInTwitter => r'Sign in with Twitter';
 }
 
@@ -289,7 +289,7 @@ Mit $providerName anmelden um fortzufarhen.''';
   @override
   String get signInEmail => r'Mit Email anmelden';
 
-    @override
+  @override
   String get signInTwitter => r'Mit Twitter anmelden';
 }
 

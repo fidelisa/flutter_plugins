@@ -65,7 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (_currentUser == null) {
       return new SignInScreen(
         title: "Bienvenue",
-        
         header: new Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: new Padding(
