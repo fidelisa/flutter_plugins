@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         const Locale('fr', 'FR'),
         const Locale('en', 'US'),
         const Locale('de', 'DE'),
+        const Locale('pt', 'BR'),
       ],
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -135,6 +136,6 @@ class HomeScreen extends StatelessWidget {
           )));
 
   void _logout() {
-    FirebaseAuth.instance.signOut();
+    signOutProviders();
   }
 }

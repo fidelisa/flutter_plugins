@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="VideoTheme"  parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_material_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
+
+        <item name="actionMenuTextColor">@color/primary_text_default_material_light</item>
+        <item name="android:actionMenuTextColor">@color/primary_text_default_material_light</item>
+    </style>
+</resources>

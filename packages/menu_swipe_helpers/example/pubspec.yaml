@@ -11,7 +11,6 @@ dependencies:
   flutter_plugins_assets:  
     git: 
       url: git://github.com/fidelisa/flutter_plugins_assets
-      ref: 07a7f5043ee0c289bece8dc62c4907b08af793ee
 
       
 dev_dependencies:

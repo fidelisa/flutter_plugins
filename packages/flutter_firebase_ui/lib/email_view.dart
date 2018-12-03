@@ -32,6 +32,8 @@ class _EmailViewState extends State<EmailView> {
                 children: <Widget>[
                   new TextField(
                     controller: _controllerEmail,
+                    autofocus: true,
+                    onSubmitted: _submit,
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     decoration: new InputDecoration(
@@ -59,6 +61,10 @@ class _EmailViewState extends State<EmailView> {
         ],
       );
 
+  _submit(String submitted) {
+    _connexion(context);
+  }
+
   _connexion(BuildContext context) async {
     try {
       final FirebaseAuth auth = FirebaseAuth.instance;
@@ -66,7 +72,7 @@ class _EmailViewState extends State<EmailView> {
           await auth.fetchProvidersForEmail(email: _controllerEmail.text);
       print(providers);
 
-      if (providers.isEmpty) {
+      if (providers == null || providers.isEmpty) {
         bool connected = await Navigator.of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
           return new SignUpView(_controllerEmail.text, widget.passwordCheck);
