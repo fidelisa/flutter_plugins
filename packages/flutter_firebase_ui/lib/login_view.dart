@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:meta/meta.dart';
 
 import 'email_view.dart';
@@ -10,11 +11,15 @@ import 'utils.dart';
 class LoginView extends StatefulWidget {
   final List<ProvidersTypes> providers;
   final bool passwordCheck;
+  String twitterConsumerKey;
+  String twitterConsumerSecret;
 
   LoginView({
     Key key,
     @required this.providers,
     this.passwordCheck,
+    this.twitterConsumerKey,
+    this.twitterConsumerSecret,
   }) : super(key: key);
 
   @override
@@ -27,8 +32,7 @@ class _LoginViewState extends State<LoginView> {
   Map<ProvidersTypes, ButtonDescription> _buttons;
 
   _handleEmailSignIn() async {
-    String value = await Navigator.of(context)
-        .push(new MaterialPageRoute<String>(builder: (BuildContext context) {
+    String value = await Navigator.of(context).push(new MaterialPageRoute<String>(builder: (BuildContext context) {
       return new EmailView(widget.passwordCheck);
     }));
 
@@ -61,8 +65,7 @@ class _LoginViewState extends State<LoginView> {
         await facebookLogin.logInWithReadPermissions(['email']);
     if (result.accessToken != null) {
       try {
-        FirebaseUser user = await _auth.signInWithFacebook(
-            accessToken: result.accessToken.token);
+        FirebaseUser user = await _auth.signInWithFacebook(accessToken: result.accessToken.token);
         print(user);
       } catch (e) {
         showErrorDialog(context, e.details);
@@ -70,25 +73,44 @@ class _LoginViewState extends State<LoginView> {
     }
   }
 
+  _handleTwitterSignin() async {
+    var twitterLogin = new TwitterLogin(
+      consumerKey: widget.twitterConsumerKey,
+      consumerSecret: widget.twitterConsumerSecret,
+    );
+
+    final TwitterLoginResult result = await twitterLogin.authorize();
+
+    switch (result.status) {
+      case TwitterLoginStatus.loggedIn:
+        var session = result.session;
+
+    FirebaseUser user = await _auth.signInWithTwitter(
+        authToken: result.session.token,
+        authTokenSecret: result.session.secret);
+        break;
+      case TwitterLoginStatus.cancelledByUser:
+        showErrorDialog(context, result.errorMessage);
+        break;
+      case TwitterLoginStatus.error:
+        showErrorDialog(context, result.errorMessage);
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _buttons = {
-      ProvidersTypes.facebook:
-          providersDefinitions(context)[ProvidersTypes.facebook]
-              .copyWith(onSelected: _handleFacebookSignin),
-      ProvidersTypes.google:
-          providersDefinitions(context)[ProvidersTypes.google]
-              .copyWith(onSelected: _handleGoogleSignIn),
-      ProvidersTypes.email: providersDefinitions(context)[ProvidersTypes.email]
-          .copyWith(onSelected: _handleEmailSignIn),
+      ProvidersTypes.facebook: providersDefinitions(context)[ProvidersTypes.facebook].copyWith(onSelected: _handleFacebookSignin),
+      ProvidersTypes.google: providersDefinitions(context)[ProvidersTypes.google].copyWith(onSelected: _handleGoogleSignIn),
+      ProvidersTypes.twitter: providersDefinitions(context)[ProvidersTypes.twitter].copyWith(onSelected: _handleTwitterSignin),
+      ProvidersTypes.email: providersDefinitions(context)[ProvidersTypes.email].copyWith(onSelected: _handleEmailSignIn),
     };
 
     return new Container(
         child: new ListView(
             children: widget.providers.map((p) {
-      return new Container(
-          padding: const EdgeInsets.symmetric(vertical: 0.0),
-          child: _buttons[p] ?? new Container());
+      return new Container(padding: const EdgeInsets.symmetric(vertical: 0.0), child: _buttons[p] ?? new Container());
     }).toList()));
   }
 
@@ -98,6 +120,8 @@ class _LoginViewState extends State<LoginView> {
       _handleFacebookSignin();
     } else if (provider == ProvidersTypes.google) {
       _handleGoogleSignIn();
+    } else if (provider == ProvidersTypes.twitter) {
+      _handleTwitterSignin();
     }
   }
 }

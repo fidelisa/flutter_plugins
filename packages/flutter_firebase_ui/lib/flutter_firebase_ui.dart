@@ -15,6 +15,8 @@ class SignInScreen extends StatefulWidget {
     this.signUpPasswordCheck,
     this.providers,
     this.color = Colors.white,
+    this.twitterConsumerKey,
+    this.twitterConsumerSecret,
   }) : super(key: key);
 
   final String title;
@@ -23,6 +25,8 @@ class SignInScreen extends StatefulWidget {
   final List<ProvidersTypes> providers;
   final Color color;
   final bool signUpPasswordCheck;
+  final String twitterConsumerKey;
+  final String twitterConsumerSecret;
 
   @override
   _SignInScreenState createState() => new _SignInScreenState();
@@ -55,7 +59,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   new Expanded(
                       child: new LoginView(
                           providers: _providers,
-                          passwordCheck: _passwordCheck)),
+                          passwordCheck: _passwordCheck,
+                          twitterConsumerKey: widget.twitterConsumerKey,
+                          twitterConsumerSecret: widget.twitterConsumerSecret)),
                   _footer
                 ],
               ));
