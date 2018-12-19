@@ -1,3 +1,7 @@
+## [0.0.13] - 19/12/2018
+* update dependencies
+* add twitter
+
 ## [0.0.12] - 27/09/2018
 * after trouble sign in pop
 
