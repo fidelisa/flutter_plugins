@@ -84,6 +84,7 @@ class _FFULocalizationsDelegate
     'fr', // French
     'de', // Deutsch
     'pt', // Portuguese
+    'es', // Spanish
   ];
 
   @override

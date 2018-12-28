@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         const Locale('en', 'US'),
         const Locale('de', 'DE'),
         const Locale('pt', 'BR'),
+        const Locale('es', 'MX'),
       ],
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
