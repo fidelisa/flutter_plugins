@@ -14,6 +14,8 @@ class FFULocalizations {
 
   String get welcome => _translationBundle.welcome;
 
+  String get signUpTitle => _translationBundle.signUpTitle;
+
   String get emailLabel => _translationBundle.emailLabel;
 
   String get nextButtonLabel => _translationBundle.nextButtonLabel;
@@ -84,6 +86,7 @@ class _FFULocalizationsDelegate
     'fr', // French
     'de', // Deutsch
     'pt', // Portuguese
+    'es', // Spanish
   ];
 
   @override

@@ -1,6 +1,6 @@
 name: flutter_firebase_ui
 description: Firebase auth UI, dart package try to mimic the firebaseUI.
-version: 0.0.12
+version: 0.0.13
 author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
@@ -23,21 +23,20 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter:
   assets:
-   - assets/fb-logo.png
-   - assets/2.0x/fb-logo.png
-   - assets/3.0x/fb-logo.png
+    - assets/fb-logo.png
+    - assets/2.0x/fb-logo.png
+    - assets/3.0x/fb-logo.png
 
-   - assets/email-logo.png
-   - assets/2.0x/email-logo.png
-   - assets/3.0x/email-logo.png
+    - assets/email-logo.png
+    - assets/2.0x/email-logo.png
+    - assets/3.0x/email-logo.png
 
-   - assets/go-logo.png
-   - assets/2.0x/go-logo.png
-   - assets/3.0x/go-logo.png
+    - assets/go-logo.png
+    - assets/2.0x/go-logo.png
+    - assets/3.0x/go-logo.png
 
-   - assets/twitter-logo.png
-   - assets/2.0x/twitter-logo.png
-   - assets/3.0x/twitter-logo.png
+    - assets/twitter-logo.png
+    - assets/2.0x/twitter-logo.png
+    - assets/3.0x/twitter-logo.png

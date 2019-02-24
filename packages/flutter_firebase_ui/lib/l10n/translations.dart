@@ -6,6 +6,8 @@ class TranslationBundle {
 
   String get welcome => parent?.welcome;
 
+  String get signUpTitle => parent?.signUpTitle;
+
   String get emailLabel => parent?.emailLabel;
 
   String get nextButtonLabel => parent?.nextButtonLabel;
@@ -57,6 +59,8 @@ class _Bundle_fr extends TranslationBundle {
 
   @override
   String get welcome => r'Bienvenue';
+  @override
+  String get signUpTitle => 'Enregistrer un nouvel utilisateur';
   @override
   String get emailLabel => r'Adresse mail';
   @override
@@ -140,6 +144,8 @@ class _Bundle_en extends TranslationBundle {
   @override
   String get welcome => r'Welcome';
   @override
+  String get signUpTitle => 'Register new user';
+  @override
   String get emailLabel => r'Email';
   @override
   String get passwordLabel => r'Password';
@@ -219,6 +225,8 @@ class _Bundle_de extends TranslationBundle {
 
   @override
   String get welcome => r'Willkommen';
+  @override
+  String get signUpTitle => 'Neuen Benutzer registrieren';
   @override
   String get emailLabel => r'Email';
   @override
@@ -300,6 +308,8 @@ class _Bundle_pt extends TranslationBundle {
   @override
   String get welcome => r'Bem-Vindo';
   @override
+  String get signUpTitle => 'Registrar novo usuário';
+  @override
   String get emailLabel => r'E-mail';
   @override
   String get passwordLabel => r'Senha';
@@ -370,6 +380,86 @@ Faça login com o $providerName para continuar.''';
   String get signInEmail => r'Login com o e-mail';
 }
 
+// ignore: camel_case_types
+class _Bundle_es extends TranslationBundle {
+  const _Bundle_es() : super(null);
+
+  @override
+  String get welcome => r'Bienvenido';
+  @override
+  String get emailLabel => r'Email';
+  @override
+  String get passwordLabel => r'Contraseña';
+
+  @override
+  String get passwordCheckLabel => r'Confirma la contraseña';
+
+  @override
+  String get passwordCheckError => r'Las contraseñas no coinciden';
+
+  @override
+  String get nextButtonLabel => r'SIGUIENTE';
+  @override
+  String get cancelButtonLabel => r'CANCELAR';
+  @override
+  String get signInLabel => r'ENTRAR';
+  @override
+  String get signInTitle => r'Entrar';
+
+  @override
+  String get saveLabel => r'GUARDAR';
+
+  @override
+  String get troubleSigningInLabel => 'Problemas para entrar ?';
+
+  @override
+  String get passwordInvalidMessage =>
+      'La contraseña es inválida o el usuario no tiene contraseña.';
+
+  @override
+  String get recoverPasswordTitle => r'Recuperar contraseña';
+
+  @override
+  String get recoverHelpLabel =>
+      r'Sigue las instrucciones enviadas a este email ' +
+      'para descubrir cómo reiniciar tu contraseña';
+
+  @override
+  String get sendButtonLabel => r'ENVIAR';
+
+  @override
+  String get nameLabel => r'Nombres y apellidos';
+
+  @override
+  String get errorOccurred => r'Occurió un error';
+
+  @override
+  allReadyEmailMessage(String email, String providerName) {
+    return '''Ya has usado el email $email.
+Entra con $providerName para continuar.''';
+  }
+
+  @override
+  recoverDialog(String email) {
+    return 'Siga las instrucciones enviadas a $email para recuperar tu contraseña';
+  }
+
+  String get passwordLengthMessage =>
+      r'La contraseña debe tener 6 o más caracteres';
+
+  @override
+  String get signInFacebook => r'Entrar con Facebook';
+
+  @override
+  String get signInGoogle => r'Entrar con Google';
+
+  @override
+  String get signInEmail => r'Entrar con email';
+
+  @override
+  String get signInTwitter => r'Entrar con Twitter';
+}
+
 TranslationBundle translationBundleForLocale(Locale locale) {
   switch (locale.languageCode) {
     case 'fr':
@@ -380,6 +470,8 @@ TranslationBundle translationBundleForLocale(Locale locale) {
       return const _Bundle_de();
     case 'pt':
       return const _Bundle_pt();
+    case 'es':
+      return const _Bundle_es();
   }
   return const TranslationBundle(null);
 }
