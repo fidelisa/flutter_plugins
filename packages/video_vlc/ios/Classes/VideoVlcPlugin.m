@@ -4,7 +4,7 @@
 static NSString *const CHANNEL_NAME = @"video_vlc";
 
 // UIWebViewDelegate
-@interface VideoVlcPlugin () <UIScrollViewDelegate> {
+@interface VideoVlcPlugin ()<UIScrollViewDelegate> {
   UIView *_movieView;
 }
 @end
