@@ -7,12 +7,12 @@ dependencies:
   cupertino_icons: ^0.1.0
   menu_swipe_helpers:
     path: ../
-  
-  flutter_plugins_assets:  
-    git: 
+
+  flutter_plugins_assets:
+    git:
       url: git://github.com/fidelisa/flutter_plugins_assets
 
-      
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,3 +25,8 @@ flutter:
   uses-material-design: true
   assets:
     - packages/flutter_plugins_assets/avatars/yann.jpg
+
+analyzer:
+  strong-mode: true
+  language:
+    enableSuperMixins: true
