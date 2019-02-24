@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VideoPlayerController : UIViewController<UIGestureRecognizerDelegate>
+@interface VideoPlayerController : UIViewController <UIGestureRecognizerDelegate>
 @property(strong, nonatomic) NSString *urlString;
 
 @end
