@@ -45,7 +45,7 @@ class _SignUpViewState extends State<SignUpView> {
     _controllerEmail.text = widget.email;
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Connexion"),
+        title: new Text(FFULocalizations.of(context).signUpTitle),
         elevation: 4.0,
       ),
       body: new Builder(
