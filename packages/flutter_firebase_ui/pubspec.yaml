@@ -1,6 +1,6 @@
 name: flutter_firebase_ui
 description: Firebase auth UI, dart package try to mimic the firebaseUI.
-version: 0.0.12
+version: 0.0.13
 author: Yann-Cyril Pelud <yann@fidelisa.com>
 homepage: https://github.com/fidelisa/flutter_plugins
 
@@ -14,30 +14,29 @@ dependencies:
   flutter_twitter_login:
     git: git://github.com/diegoveloper/flutter_twitter_login.git
 
-  firebase_auth: ^0.6.6
+  firebase_auth: ^0.8.0+1
 
-  google_sign_in: ^3.2.1
-  flutter_facebook_login: ^1.1.1
+  google_sign_in: ^4.0.0
+  flutter_facebook_login: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter:
   assets:
-   - assets/fb-logo.png
-   - assets/2.0x/fb-logo.png
-   - assets/3.0x/fb-logo.png
+    - assets/fb-logo.png
+    - assets/2.0x/fb-logo.png
+    - assets/3.0x/fb-logo.png
 
-   - assets/email-logo.png
-   - assets/2.0x/email-logo.png
-   - assets/3.0x/email-logo.png
+    - assets/email-logo.png
+    - assets/2.0x/email-logo.png
+    - assets/3.0x/email-logo.png
 
-   - assets/go-logo.png
-   - assets/2.0x/go-logo.png
-   - assets/3.0x/go-logo.png
+    - assets/go-logo.png
+    - assets/2.0x/go-logo.png
+    - assets/3.0x/go-logo.png
 
-   - assets/twitter-logo.png
-   - assets/2.0x/twitter-logo.png
-   - assets/3.0x/twitter-logo.png
+    - assets/twitter-logo.png
+    - assets/2.0x/twitter-logo.png
+    - assets/3.0x/twitter-logo.png

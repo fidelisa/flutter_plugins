@@ -52,11 +52,9 @@ class _LoginViewState extends State<LoginView> {
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       if (googleAuth.accessToken != null) {
         try {
-          FirebaseUser user = await _auth.signInWithGoogle(
-            accessToken: googleAuth.accessToken,
-            idToken: googleAuth.idToken,
-          );
-
+          AuthCredential credential = GoogleAuthProvider.getCredential(
+              idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
+          FirebaseUser user = await _auth.signInWithCredential(credential);
           print(user);
         } catch (e) {
           showErrorDialog(context, e.details);
@@ -70,8 +68,9 @@ class _LoginViewState extends State<LoginView> {
         await facebookLogin.logInWithReadPermissions(['email']);
     if (result.accessToken != null) {
       try {
-        FirebaseUser user = await _auth.signInWithFacebook(
+        AuthCredential credential = FacebookAuthProvider.getCredential(
             accessToken: result.accessToken.token);
+        FirebaseUser user = await _auth.signInWithCredential(credential);
         print(user);
       } catch (e) {
         showErrorDialog(context, e.details);
@@ -89,9 +88,10 @@ class _LoginViewState extends State<LoginView> {
 
     switch (result.status) {
       case TwitterLoginStatus.loggedIn:
-        await _auth.signInWithTwitter(
+        AuthCredential credential = TwitterAuthProvider.getCredential(
             authToken: result.session.token,
             authTokenSecret: result.session.secret);
+        await _auth.signInWithCredential(credential);
         break;
       case TwitterLoginStatus.cancelledByUser:
         showErrorDialog(context, result.errorMessage);

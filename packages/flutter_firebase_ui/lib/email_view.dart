@@ -70,7 +70,7 @@ class _EmailViewState extends State<EmailView> {
     try {
       final FirebaseAuth auth = widget.auth;
       List<String> providers =
-          await auth.fetchProvidersForEmail(email: _controllerEmail.text);
+          await auth.fetchSignInMethodsForEmail(email: _controllerEmail.text);
       print(providers);
 
       if (providers == null || providers.isEmpty) {
