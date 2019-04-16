@@ -6,8 +6,9 @@ import 'utils.dart';
 
 class TroubleSignIn extends StatefulWidget {
   final String email;
+  final FirebaseAuth auth;
 
-  TroubleSignIn(this.email, {Key key}) : super(key: key);
+  TroubleSignIn(this.email, this.auth, {Key key}) : super(key: key);
 
   @override
   _TroubleSignInState createState() => new _TroubleSignInState();
@@ -75,7 +76,7 @@ class _TroubleSignInState extends State<TroubleSignIn> {
   }
 
   _send(BuildContext context) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
+    FirebaseAuth _auth = widget.auth;
     try {
       await _auth.sendPasswordResetEmail(email: _controllerEmail.text);
       Navigator.of(context).pop();

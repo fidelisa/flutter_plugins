@@ -7,8 +7,9 @@ import 'utils.dart';
 
 class PasswordView extends StatefulWidget {
   final String email;
+  final FirebaseAuth auth;
 
-  PasswordView(this.email, {Key key}) : super(key: key);
+  PasswordView(this.email, this.auth, {Key key}) : super(key: key);
 
   @override
   _PasswordViewState createState() => new _PasswordViewState();
@@ -95,12 +96,12 @@ class _PasswordViewState extends State<PasswordView> {
   _handleLostPassword() {
     Navigator.of(context)
         .push(new MaterialPageRoute<Null>(builder: (BuildContext context) {
-      return new TroubleSignIn(_controllerEmail.text);
+      return new TroubleSignIn(_controllerEmail.text, widget.auth);
     }));
   }
 
   _connexion(BuildContext context) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
+    FirebaseAuth _auth = widget.auth;
     FirebaseUser user;
     try {
       user = await _auth.signInWithEmailAndPassword(

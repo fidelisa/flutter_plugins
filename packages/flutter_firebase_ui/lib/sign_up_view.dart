@@ -8,8 +8,10 @@ import 'utils.dart';
 class SignUpView extends StatefulWidget {
   final String email;
   final bool passwordCheck;
+  final FirebaseAuth auth;
 
-  SignUpView(this.email, this.passwordCheck, {Key key}) : super(key: key);
+  SignUpView(this.email, this.passwordCheck, this.auth, {Key key})
+      : super(key: key);
 
   @override
   _SignUpViewState createState() => new _SignUpViewState();
@@ -131,7 +133,7 @@ class _SignUpViewState extends State<SignUpView> {
       return;
     }
 
-    FirebaseAuth _auth = FirebaseAuth.instance;
+    FirebaseAuth _auth = widget.auth;
     try {
       FirebaseUser user = await _auth.createUserWithEmailAndPassword(
         email: _controllerEmail.text,

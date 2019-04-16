@@ -1,10 +1,12 @@
 library flutter_firebase_ui;
 
-export 'utils.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'login_view.dart';
 import 'utils.dart';
+
+export 'utils.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({
@@ -17,6 +19,7 @@ class SignInScreen extends StatefulWidget {
     this.color = Colors.white,
     this.twitterConsumerKey,
     this.twitterConsumerSecret,
+    this.auth,
   }) : super(key: key);
 
   final String title;
@@ -27,6 +30,7 @@ class SignInScreen extends StatefulWidget {
   final bool signUpPasswordCheck;
   final String twitterConsumerKey;
   final String twitterConsumerSecret;
+  final FirebaseAuth auth;
 
   @override
   _SignInScreenState createState() => new _SignInScreenState();
@@ -34,6 +38,7 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   Widget get _header => widget.header ?? new Container();
+
   Widget get _footer => widget.footer ?? new Container();
 
   bool get _passwordCheck => widget.signUpPasswordCheck ?? false;
@@ -58,10 +63,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   _header,
                   new Expanded(
                       child: new LoginView(
-                          providers: _providers,
-                          passwordCheck: _passwordCheck,
-                          twitterConsumerKey: widget.twitterConsumerKey,
-                          twitterConsumerSecret: widget.twitterConsumerSecret)),
+                    providers: _providers,
+                    passwordCheck: _passwordCheck,
+                    twitterConsumerKey: widget.twitterConsumerKey,
+                    twitterConsumerSecret: widget.twitterConsumerSecret,
+                    auth: widget.auth ?? FirebaseAuth.instance,
+                  )),
                   _footer
                 ],
               ));

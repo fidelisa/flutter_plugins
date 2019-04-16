@@ -8,8 +8,9 @@ import 'utils.dart';
 
 class EmailView extends StatefulWidget {
   final bool passwordCheck;
+  final FirebaseAuth auth;
 
-  EmailView(this.passwordCheck, {Key key}) : super(key: key);
+  EmailView(this.passwordCheck, this.auth, {Key key}) : super(key: key);
 
   @override
   _EmailViewState createState() => new _EmailViewState();
@@ -67,7 +68,7 @@ class _EmailViewState extends State<EmailView> {
 
   _connexion(BuildContext context) async {
     try {
-      final FirebaseAuth auth = FirebaseAuth.instance;
+      final FirebaseAuth auth = widget.auth;
       List<String> providers =
           await auth.fetchSignInMethodsForEmail(email: _controllerEmail.text);
       print(providers);
@@ -75,7 +76,8 @@ class _EmailViewState extends State<EmailView> {
       if (providers == null || providers.isEmpty) {
         bool connected = await Navigator.of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
-          return new SignUpView(_controllerEmail.text, widget.passwordCheck);
+          return new SignUpView(
+              _controllerEmail.text, widget.passwordCheck, auth);
         }));
 
         if (connected) {
@@ -84,7 +86,7 @@ class _EmailViewState extends State<EmailView> {
       } else if (providers.contains('password')) {
         bool connected = await Navigator.of(context)
             .push(new MaterialPageRoute<bool>(builder: (BuildContext context) {
-          return new PasswordView(_controllerEmail.text);
+          return new PasswordView(_controllerEmail.text, auth);
         }));
 
         if (connected) {
