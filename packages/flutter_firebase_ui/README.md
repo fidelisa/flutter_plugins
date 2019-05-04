@@ -9,7 +9,7 @@ It provider UI for the common identity providers, Facebook, Google, Twitter and 
 Note: this plugin use firebase_auth you must configure it as describe [here](https://pub.dartlang.org/packages/firebase_auth).
 
 
-![screenshot](https://github.com/fidelisa/flutter_plugins/blob/master/packages/flutter_firebase_ui/swipe.gif?raw=true)
+![screenshot](https://gyazo.com/80c567a14bcf7343406105dc83228c64/raw)
 
 Show [firebase ui](https://github.com/fidelisa/flutter_plugins/tree/master/packages/flutter_firebase_ui/example) example.
 
